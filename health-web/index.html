@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>健康报告 - 可视化</title>
+		<link rel="stylesheet" type="text/css" href="css/app.css" />
+	</head>
+	
+	<body>
+		<header id="header">
+			<h3 class="header-title">健康报告 - 可视化</h3>
+			<div class="header-info header-info-l">数据来源：</div>
+			<div class="header-info header-info-r">日期：<span id="nowDate"></span></div>
+		</header>
+		
+		<footer id="footer"></footer>
+		
+		<div id="container">
+			<div id="flexCon">
+				<div class="flex-row">
+					<div class="flex-cell flex-cell-l">
+						<div class="chart-wrapper">
+							<h3 class="chart-title">排行榜</h3>
+							<div class="chart-div" id="rankChart">
+								<div class="chart-loader"><div class="loader"></div></div>
+							</div>
+						</div>
+					</div>
+					<div class="flex-cell flex-cell-c" style="padding-right:0;">
+						<div class="chart-wrapper">
+							<h3 class="chart-title">汇总数据</h3>
+							<div class="chart-div chart-done">
+								<table class="data-t">
+									<tr>
+										<th><img src="img/icon-01.png" /></th>
+										<td>
+											<p><span id="total">0</span></p>
+											<p>总里程</p>
+										</td>
+										<th><img src="img/icon-02.png" /></th>
+										<td>
+											<p><span id="send">0</span></p>
+											<p>总时长</p>
+										</td>
+									</tr>
+									<tr>
+										<th><img src="img/icon-03.png" /></th>
+										<td>
+											<p><span id="take">0</span></p>
+											<p>总次数</p>
+										</td>
+										<th><img src="img/icon-04.png" /></th>
+										<td>
+											<p><span id="complete">0</span></p>
+											<p>消耗卡路里</p>
+										</td>
+									</tr>
+									<tr>
+										<th><img src="img/icon-05.png" /></th>
+										<td>
+											<p><span id="timelyAcceptanceRate">0</span></p>
+											<p>总爬升</p>
+										</td>
+										<th><img src="img/icon-06.png" /></th>
+										<td>
+											<p><span id="timelyCompletionRate">0</span></p>
+											<p></p>
+										</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+					<div class="flex-cell flex-cell-r" style="padding-left:0;">
+						<div class="chart-wrapper">
+							<h3 class="chart-title">健康环比</h3>
+							<div class="chart-div" id="mapChart">
+								<div class="chart-loader"><div class="loader"></div></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="flex-row">
+					<div class="flex-cell flex-cell-lc" style="padding-bottom:0;">
+						<div class="chart-wrapper">
+							<h3 class="chart-title">健康趋势图</h3>
+							<div class="chart-div" id="trendChart">
+								<div class="chart-loader"><div class="loader"></div></div>
+							</div>
+						</div>
+					</div>
+					<div class="flex-cell flex-cell-r" style="padding-bottom:0;">
+						<div class="chart-wrapper">
+							<h3 class="chart-title">健康状态</h3>
+							<div class="chart-div" id="csrcChart">
+								<div class="chart-loader"><div class="loader"></div></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+		<script type="text/javascript" src="js/countUp.min.js"></script>
+		<script type="text/javascript" src="js/echarts.min.js"></script>
+		<script type="text/javascript" src="js/echarts-map-china.js"></script>
+		<script type="text/javascript" src="js/echarts-theme-shine.js"></script>
+		<script type="text/javascript" src="js/index.js"></script>
+	</body>
+</html>
