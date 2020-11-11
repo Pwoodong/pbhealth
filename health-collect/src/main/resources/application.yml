@@ -1,5 +1,5 @@
 server:
-  port: 8888
+  port: 8886
   servlet:
     context-path: /
 
@@ -39,13 +39,7 @@ spring:
 
 ds1:
   datasource:
-    url: jdbc:mysql://106.13.101.177:3306/jsjb?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
+    url: jdbc:mysql://127.0.0.1:3306/running?serverTimezone=UTC
     username: root
-    password: COdPwFN3htseXbXs
-    driverClassName: com.mysql.jdbc.Driver
-ds2:
-  datasource:
-    url: jdbc:mysql://106.13.101.177:3306/jsjb?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
-    username: root
-    password: COdPwFN3htseXbXs
+    password: 1qaz2wsx
     driverClassName: com.mysql.jdbc.Driver
