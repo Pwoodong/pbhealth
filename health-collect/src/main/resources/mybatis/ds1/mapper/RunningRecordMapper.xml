@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jiu.collect.mapper.ds1.RunningRecordMapper">
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+        insert into running_record
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userId != null">
+                user_id,
+            </if>
+            <if test="type != null">
+                type,
+            </if>
+            <if test="kilometre != null">
+                kilometre,
+            </if>
+            <if test="consumeTime != null">
+                consume_time,
+            </if>
+            <if test="pace != null">
+                pace,
+            </if>
+            <if test="calorie != null">
+                calorie,
+            </if>
+            <if test="climb != null">
+                climb,
+            </if>
+            <if test="heartRate != null">
+                heart_rate,
+            </if>
+            <if test="strideRate != null">
+                stride_rate,
+            </if>
+            <if test="stride != null">
+                stride,
+            </if>
+            <if test="runningTime != null">
+                running_time,
+            </if>
+            <if test="createUserId != null">
+                create_user_id,
+            </if>
+            status,create_time
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userId != null">
+                #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="type != null">
+                #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="kilometre != null">
+                #{kilometre,jdbcType=VARCHAR},
+            </if>
+            <if test="consumeTime != null">
+                #{consumeTime,jdbcType=VARCHAR},
+            </if>
+            <if test="pace != null">
+                #{pace,jdbcType=VARCHAR},
+            </if>
+            <if test="calorie != null">
+                #{calorie,jdbcType=VARCHAR},
+            </if>
+            <if test="climb != null">
+                #{climb,jdbcType=VARCHAR},
+            </if>
+            <if test="heartRate != null">
+                #{heartRate,jdbcType=VARCHAR},
+            </if>
+            <if test="strideRate != null">
+                #{strideRate,jdbcType=VARCHAR},
+            </if>
+            <if test="stride != null">
+                #{stride,jdbcType=VARCHAR},
+            </if>
+            <if test="runningTime != null">
+                #{runningTime,jdbcType=VARCHAR},
+            </if>
+            <if test="createUserId != null">
+                #{createUserId,jdbcType=INTEGER},
+            </if>
+            0,CURRENT_TIMESTAMP()
+        </trim>
+    </insert>
+
+    <update id="update">
+        update running_record
+        <set >
+            <if test="userId != null" >
+                user_id = #{userId},
+            </if>
+            <if test="type != null" >
+                type = #{type},
+            </if>
+            <if test="kilometre != null" >
+                kilometre = #{kilometre},
+            </if>
+            <if test="consumeTime != null" >
+                consume_time = #{consumeTime},
+            </if>
+            <if test="pace != null" >
+                pace = #{pace},
+            </if>
+            <if test="calorie != null" >
+                calorie = #{calorie},
+            </if>
+            <if test="climb != null" >
+                climb = #{climb},
+            </if>
+            <if test="heartRate != null" >
+                heart_rate = #{heartRate},
+            </if>
+            <if test="strideRate != null" >
+                stride_rate = #{strideRate},
+            </if>
+            <if test="stride != null" >
+                stride = #{stride},
+            </if>
+            <if test="runningTime != null">
+                running_time = #{runningTime},
+            </if>
+            <if test="status != null" >
+                status = #{status},
+            </if>
+            <if test="updateUserId != null" >
+                update_user_id = #{updateUserId},
+            </if>
+        </set>
+        where status = '0'
+        and id = #{id}
+    </update>
+
+    <update id="delete">
+        update running_record
+            set status = '99',
+        where id = #{id}
+    </update>
+
+</mapper>
