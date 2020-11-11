@@ -14,7 +14,7 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import javax.sql.DataSource;
 
 /**
- * Package com.jiu.bigscreen.config
+ * Package com.jiu.calculate.config
  * ClassName Ds2DataSourceConfig.java
  * Description 数据源二
  *
@@ -29,7 +29,7 @@ public class Ds2DataSourceConfig {
     /**
      * 配置多数据源 关键就在这里 这里配置了不同的数据源扫描不同mapper
      */
-    static final String PACKAGE = "com.jiu.bigscreen.mapper.ds2";
+    static final String PACKAGE = "com.jiu.calculate.mapper.ds2";
     static final String MAPPER_LOCATION = "classpath:mybatis/ds2/mapper/*.xml";
 
     /**

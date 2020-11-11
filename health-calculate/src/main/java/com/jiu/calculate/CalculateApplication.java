@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
  * @author liaoyj
  * @date 2020-10-21
  **/
-@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
+@SpringBootApplication(exclude={DataSourceAutoConfiguration.class})
 public class CalculateApplication {
 
     public static void main(String[] args) {

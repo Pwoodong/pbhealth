@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * Package com.jiu.bigscreen.datasource
+ * Package com.jiu.calculate.datasource
  * ClassName DruidConfiguration.java
  * Description
  *
