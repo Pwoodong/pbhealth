@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
+
 /**
  * Package com.jiu.collect.service.impl
  * ClassName DataCollectServiceImpl.java
@@ -22,6 +24,14 @@ public class DataCollectServiceImpl implements DataCollectService {
 
     @Autowired
     private RunningRecordMapper runningRecordMapper;
+
+    /**
+     * @see DataCollectService#selectRunningRecord(RunningRecord)
+     */
+    @Override
+    public List<RunningRecord> selectRunningRecord(RunningRecord runningRecord) {
+        return runningRecordMapper.select(runningRecord);
+    }
 
     /**
      * @see DataCollectService#insertRunningRecord(RunningRecord)

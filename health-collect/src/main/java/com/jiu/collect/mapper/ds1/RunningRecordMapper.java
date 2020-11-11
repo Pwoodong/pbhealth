@@ -1,7 +1,8 @@
 package com.jiu.collect.mapper.ds1;
 
 import com.jiu.collect.entity.RunningRecord;
-import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * Package com.running.report.dao
@@ -13,6 +14,13 @@ import org.springframework.stereotype.Repository;
  * @date 2019-12-16 14:00
  **/
 public interface RunningRecordMapper {
+
+    /**
+     * 查询记录
+     * @param   runningRecord   参数对象
+     * @return  List<RunningRecord>
+     */
+    List<RunningRecord> select(RunningRecord runningRecord);
 
     /**
      * 新增记录
