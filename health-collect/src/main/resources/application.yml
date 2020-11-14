@@ -1,7 +1,7 @@
 server:
-  port: 8886
+  port: 8880
   servlet:
-    context-path: /
+    context-path: /health-collect
 
 spring:
   datasource:
@@ -39,7 +39,7 @@ spring:
 
 ds1:
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/running?serverTimezone=UTC
+    url: jdbc:mysql://10.1.1.100:3306/running?serverTimezone=UTC&useSSL=false
     username: root
     password: 1qaz2wsx
     driverClassName: com.mysql.jdbc.Driver
