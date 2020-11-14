@@ -44,7 +44,7 @@
 
 ## 架构图
 
-<img src="..\document\framework\HealthFramework.png" alt="健康管理架构" style="zoom:100%;float:left;" />
+![健康管理架构](https://github.com/Pwoodong/personal-health/raw/master/document/framework/HealthFramework.png)
 
 ## 其它
 
