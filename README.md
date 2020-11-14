@@ -44,7 +44,7 @@
 
 ## 架构图
 
-<img src="C:\Users\Jy\Downloads\健康管理架构.png" alt="健康管理架构" style="zoom:100%;float:left;" />
+<img src="..\document\架构图\健康管理架构.png" alt="健康管理架构" style="zoom:100%;float:left;" />
 
 ## 其它
 
