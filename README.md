@@ -42,6 +42,10 @@
 
 ​	系统:Centos
 
+## 架构图
+
+<img src="C:\Users\Jy\Downloads\健康管理架构.png" alt="健康管理架构" style="zoom:100%;float:left;" />
+
 ## 其它
 
 ​	后续实现分布式架构，考虑增加Redis、RabbitMq、Zookeeper等；将所学习到的技术应用与此项目。
