@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jiu.collect.mapper.ds1.RunningTrackMapper">
+
+    <select id="select" resultType="com.jiu.collect.entity.RunningTrack">
+        select t.id,t.user_id userId,t.type,t.longitude,t.latitude,t.heart_rate heartRate,
+        t.elevation,t.running_time runningTime,t.status,t.create_time createTime,
+        t.create_user_id createUserId,t.update_time updateTime,t.update_user_id updateUserId
+        from running_track t
+        <where>
+            <if test="startTime != null and startTime != '' ">
+                and t.running_time >= #{startTime}
+            </if>
+            <if test="endTime != null and endTime != '' ">
+                and  #{endTime} >= t.running_time
+            </if>
+        </where>
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+        insert into running_track
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userId != null">
+                user_id,
+            </if>
+            <if test="type != null">
+                type,
+            </if>
+            <if test="longitude != null">
+                longitude,
+            </if>
+            <if test="latitude != null">
+                latitude,
+            </if>
+            <if test="heartRate != null">
+                heart_rate,
+            </if>
+            <if test="elevation != null">
+                elevation,
+            </if>
+            <if test="runningTime != null">
+                running_time,
+            </if>
+            <if test="createUserId != null">
+                create_user_id,
+            </if>
+            status,create_time
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userId != null">
+                #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="type != null">
+                #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="longitude != null">
+                #{longitude,jdbcType=VARCHAR},
+            </if>
+            <if test="latitude != null">
+                #{latitude,jdbcType=VARCHAR},
+            </if>
+            <if test="heartRate != null">
+                #{heartRate,jdbcType=VARCHAR},
+            </if>
+            <if test="elevation != null">
+                #{elevation,jdbcType=VARCHAR},
+            </if>
+            <if test="runningTime != null">
+                #{runningTime,jdbcType=VARCHAR},
+            </if>
+            <if test="createUserId != null">
+                #{createUserId,jdbcType=INTEGER},
+            </if>
+            0,CURRENT_TIMESTAMP()
+        </trim>
+    </insert>
+
+    <insert id="insertBatch" >
+        insert into running_track
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userId != null">
+                user_id,
+            </if>
+            <if test="type != null">
+                type,
+            </if>
+            <if test="longitude != null">
+                longitude,
+            </if>
+            <if test="latitude != null">
+                latitude,
+            </if>
+            <if test="heartRate != null">
+                heart_rate,
+            </if>
+            <if test="elevation != null">
+                elevation,
+            </if>
+            <if test="runningTime != null">
+                running_time,
+            </if>
+            <if test="createUserId != null">
+                create_user_id,
+            </if>
+            status,create_time
+        </trim>
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="item.userId != null">
+                    #{item.userId,jdbcType=INTEGER},
+                </if>
+                <if test="item.type != null">
+                    #{item.type,jdbcType=VARCHAR},
+                </if>
+                <if test="item.longitude != null">
+                    #{item.longitude,jdbcType=VARCHAR},
+                </if>
+                <if test="item.latitude != null">
+                    #{item.latitude,jdbcType=VARCHAR},
+                </if>
+                <if test="item.heartRate != null">
+                    #{item.heartRate,jdbcType=VARCHAR},
+                </if>
+                <if test="item.elevation != null">
+                    #{item.elevation,jdbcType=VARCHAR},
+                </if>
+                <if test="item.runningTime != null">
+                    #{item.runningTime,jdbcType=VARCHAR},
+                </if>
+                <if test="item.createUserId != null">
+                    #{item.createUserId,jdbcType=INTEGER},
+                </if>
+                0,CURRENT_TIMESTAMP()
+            </trim>
+        </foreach>
+    </insert>
+
+    <update id="update">
+        update running_track
+        <set >
+            <if test="userId != null" >
+                user_id = #{userId},
+            </if>
+            <if test="type != null" >
+                type = #{type},
+            </if>
+            <if test="longitude != null" >
+                longitude = #{longitude},
+            </if>
+            <if test="latitude != null" >
+                latitude = #{latitude},
+            </if>
+            <if test="heartRate != null" >
+                heart_rate = #{heartRate},
+            </if>
+            <if test="elevation != null" >
+                elevation = #{elevation},
+            </if>
+            <if test="runningTime != null">
+                running_time = #{runningTime},
+            </if>
+            <if test="status != null" >
+                status = #{status},
+            </if>
+            <if test="updateUserId != null" >
+                update_user_id = #{updateUserId},
+            </if>
+        </set>
+        where status = '0'
+        and id = #{id}
+    </update>
+
+    <update id="delete">
+        update running_track
+        set status = '99',
+        where id = #{id}
+    </update>
+
+</mapper>

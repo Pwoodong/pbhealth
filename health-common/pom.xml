@@ -16,6 +16,12 @@
 
     <dependencies>
 
+        <dependency>
+            <groupId>me.himanshusoni.gpxparser</groupId>
+            <artifactId>gpx-parser</artifactId>
+            <version>1.12</version>
+        </dependency>
+
     </dependencies>
 
 </project>

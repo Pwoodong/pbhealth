@@ -1,18 +1,20 @@
 package com.jiu.collect.mapper.ds1;
 
 import com.jiu.collect.entity.RunningRecord;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 /**
  * Package com.running.report.dao
  * ClassName ReportDao.java
- * Description ${DESCRIPTION}
+ * Description 跑步记录数据接口
  *
  * @author Jy
  * @version V1.0
  * @date 2019-12-16 14:00
  **/
+@Repository
 public interface RunningRecordMapper {
 
     /**
