@@ -16,7 +16,7 @@ const CreateForm: React.FC<CreateFormProps> = (props) => {
       destroyOnClose
       title={intl.formatMessage({
         id: 'pages.searchTable.createForm.newRule',
-        defaultMessage: '新建规则',
+        defaultMessage: '新增记录',
       })}
       visible={modalVisible}
       onCancel={() => onCancel()}

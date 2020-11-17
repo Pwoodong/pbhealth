@@ -80,50 +80,41 @@ const TableList: React.FC<{}> = () => {
   const [selectedRowsState, setSelectedRows] = useState<TableListItem[]>([]);
   const columns: ProColumns<TableListItem>[] = [
     {
-      title: '规则名称',
-      dataIndex: 'name',
-      tip: '规则名称是唯一的 key',
-      formItemProps: {
-        rules: [
-          {
-            required: true,
-            message: '规则名称为必填项',
-          },
-        ],
-      },
-      render: (dom, entity) => {
-        return <a onClick={() => setRow(entity)}>{dom}</a>;
-      },
-    },
-    {
-      title: '描述',
-      dataIndex: 'desc',
+      title: '用户ID',
+      dataIndex: 'userId',
       valueType: 'textarea',
     },
     {
-      title: '服务调用次数',
-      dataIndex: 'callNo',
+      title: '里程',
+      dataIndex: 'kilometre',
       sorter: true,
-      hideInForm: true,
-      renderText: (val: string) => `${val} 万`,
+      renderText: (val: string) => `${val} 公里`,
     },
     {
-      title: '状态',
-      dataIndex: 'status',
-      hideInForm: true,
-      valueEnum: {
-        0: { text: '关闭', status: 'Default' },
-        1: { text: '运行中', status: 'Processing' },
-        2: { text: '已上线', status: 'Success' },
-        3: { text: '异常', status: 'Error' },
-      },
+      title: '耗时',
+      dataIndex: 'consumeTime',
+      valueType: 'textarea',
     },
     {
-      title: '上次调度时间',
-      dataIndex: 'updatedAt',
+      title: '卡路里',
+      dataIndex: 'calorie',
+      valueType: 'textarea',
+    },
+    {
+      title: '心率',
+      dataIndex: 'heartRate',
+      valueType: 'textarea',
+    },
+    {
+      title: '配速',
+      dataIndex: 'pace',
+      valueType: 'textarea',
+    },
+    {
+      title: '运动时间',
+      dataIndex: 'runningTime',
       sorter: true,
       valueType: 'dateTime',
-      hideInForm: true,
       renderFormItem: (item, { defaultRender, ...rest }, form) => {
         const status = form.getFieldValue('status');
         if (`${status}` === '0') {
@@ -147,10 +138,19 @@ const TableList: React.FC<{}> = () => {
               setStepFormValues(record);
             }}
           >
-            配置
+            修改
           </a>
           <Divider type="vertical" />
-          <a href="">订阅警报</a>
+          <a
+            onClick={() => {
+              handleUpdateModalVisible(true);
+              setStepFormValues(record);
+            }}
+          >
+            删除
+          </a>
+          <Divider type="vertical" />
+          <a href="">详情</a>
         </>
       ),
     },

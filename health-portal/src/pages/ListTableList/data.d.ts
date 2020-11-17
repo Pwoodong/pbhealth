@@ -1,4 +1,4 @@
-export interface TableListItem {
+/** export interface TableListItem {
   key: number;
   disabled?: boolean;
   href: string;
@@ -11,6 +11,20 @@ export interface TableListItem {
   updatedAt: Date;
   createdAt: Date;
   progress: number;
+} */
+
+export interface TableListItem {
+  id: number;
+  status?: boolean;
+  type: string;
+  kilometre: string;
+  userId: string;
+  consumeTime: string;
+  pace: string;
+  heartRate: number;
+  calorie: number;
+  runningTime: Date;
+  createTime: Date;
 }
 
 export interface TableListPagination {
