@@ -4,10 +4,7 @@ import com.jiu.collect.entity.RunningRecord;
 import com.jiu.collect.service.DataCollectService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -51,7 +48,7 @@ public class DataCollectController {
      * @return
      **/
     @PostMapping(value = "/save")
-    public Map<String, Object> save(RunningRecord runningRecord){
+    public Map<String, Object> save(@RequestBody RunningRecord runningRecord){
         Map<String,Object> resultMap = new HashMap<>(3);
         dataCollectService.insertRunningRecord(runningRecord);
         return resultMap;
