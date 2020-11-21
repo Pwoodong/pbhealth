@@ -30,7 +30,7 @@ import java.util.Map;
  * @date 2020-10-23 10:11
  **/
 @Configuration
-@MapperScan("com.jiu.calculate.mapper.*")
+@MapperScan("com.jiu.collect.mapper.*")
 public class MyBatisPlusConfiguration {
 
     /**

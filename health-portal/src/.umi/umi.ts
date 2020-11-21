@@ -5,8 +5,8 @@ import '../global.tsx';
 import { plugin } from './core/plugin';
 import './core/pluginRegister';
 import { createHistory } from './core/history';
-import { ApplyPluginsType } from 'F:/ProjectSpace/GitHub/personal-health/health-portal/node_modules/_@umijs_runtime@3.2.27@@umijs/runtime';
-import { renderClient } from 'F:/ProjectSpace/GitHub/personal-health/health-portal/node_modules/_@umijs_renderer-react@3.2.27@@umijs/renderer-react/dist/index.js';
+import { ApplyPluginsType } from 'F:/ProjectSpace/GitHub/personal-health/health-portal/node_modules/@umijs/runtime';
+import { renderClient } from 'F:/ProjectSpace/GitHub/personal-health/health-portal/node_modules/@umijs/renderer-react/dist/index.js';
 import { getRoutes } from './core/routes';
 
 

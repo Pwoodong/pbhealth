@@ -1,6 +1,6 @@
 // @ts-nocheck
 /**
- * Base on https://github.com/umijs/F:/ProjectSpace/GitHub/personal-health/health-portal/node_modules/_umi-request@1.3.5@umi-request
+ * Base on https://github.com/umijs/F:/ProjectSpace/GitHub/personal-health/health-portal/node_modules/umi-request
  */
 import {
   extend,
@@ -13,14 +13,14 @@ import {
   RequestResponse,
   RequestInterceptor,
   ResponseInterceptor,
-} from 'F:/ProjectSpace/GitHub/personal-health/health-portal/node_modules/_umi-request@1.3.5@umi-request';
+} from 'F:/ProjectSpace/GitHub/personal-health/health-portal/node_modules/umi-request';
 // @ts-ignore
 
 import { ApplyPluginsType } from 'umi';
 import { history, plugin } from '../core/umiExports';
             
 import { message, notification } from 'antd';
-import useUmiRequest, { UseRequestProvider } from 'F:/ProjectSpace/GitHub/personal-health/health-portal/node_modules/_@ahooksjs_use-request@2.8.1@@ahooksjs/use-request';
+import useUmiRequest, { UseRequestProvider } from 'F:/ProjectSpace/GitHub/personal-health/health-portal/node_modules/@ahooksjs/use-request';
 import {
   BaseOptions,
   BasePaginatedOptions,
@@ -36,7 +36,7 @@ import {
   PaginatedOptionsWithFormat,
   PaginatedParams,
   PaginatedResult,
-} from 'F:/ProjectSpace/GitHub/personal-health/health-portal/node_modules/_@ahooksjs_use-request@2.8.1@@ahooksjs/use-request/lib/types';
+} from 'F:/ProjectSpace/GitHub/personal-health/health-portal/node_modules/@ahooksjs/use-request/lib/types';
 
 type ResultWithData<T = any> = { data?: T; [key: string]: any };
 

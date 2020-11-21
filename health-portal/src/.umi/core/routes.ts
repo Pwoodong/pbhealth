@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React from 'react';
-import { ApplyPluginsType, dynamic } from 'F:/ProjectSpace/GitHub/personal-health/health-portal/node_modules/_@umijs_runtime@3.2.27@@umijs/runtime';
+import { ApplyPluginsType, dynamic } from 'F:/ProjectSpace/GitHub/personal-health/health-portal/node_modules/@umijs/runtime';
 import * as umiExports from './umiExports';
 import { plugin } from './plugin';
 import LoadingComponent from '@/components/PageLoading/index';
@@ -26,10 +26,6 @@ export function getRoutes() {
       {
         "path": "/",
         "component": dynamic({ loader: () => import(/* webpackChunkName: 'layouts__BasicLayout' */'F:/ProjectSpace/GitHub/personal-health/health-portal/src/layouts/BasicLayout'), loading: LoadingComponent}),
-        "authority": [
-          "admin",
-          "user"
-        ],
         "routes": [
           {
             "path": "/index.html",
@@ -53,18 +49,12 @@ export function getRoutes() {
             "name": "admin",
             "icon": "crown",
             "component": dynamic({ loader: () => import(/* webpackChunkName: 'p__Admin' */'F:/ProjectSpace/GitHub/personal-health/health-portal/src/pages/Admin'), loading: LoadingComponent}),
-            "authority": [
-              "admin"
-            ],
             "routes": [
               {
                 "path": "/admin/sub-page",
                 "name": "sub-page",
                 "icon": "smile",
                 "component": dynamic({ loader: () => import(/* webpackChunkName: 'p__Welcome' */'F:/ProjectSpace/GitHub/personal-health/health-portal/src/pages/Welcome'), loading: LoadingComponent}),
-                "authority": [
-                  "admin"
-                ],
                 "exact": true
               }
             ]

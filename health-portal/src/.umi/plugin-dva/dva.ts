@@ -3,7 +3,7 @@ import { Component } from 'react';
 import { ApplyPluginsType } from 'umi';
 import dva from 'dva';
 // @ts-ignore
-import createLoading from 'F:/ProjectSpace/GitHub/personal-health/health-portal/node_modules/_dva-loading@3.0.21@dva-loading/dist/index.esm.js';
+import createLoading from 'F:/ProjectSpace/GitHub/personal-health/health-portal/node_modules/dva-loading/dist/index.esm.js';
 import { plugin, history } from '../core/umiExports';
 import ModelGlobal0 from 'F:/ProjectSpace/GitHub/personal-health/health-portal/src/models/global.ts';
 import ModelLogin1 from 'F:/ProjectSpace/GitHub/personal-health/health-portal/src/models/login.ts';

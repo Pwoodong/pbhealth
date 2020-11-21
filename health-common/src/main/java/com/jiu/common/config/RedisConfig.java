@@ -30,7 +30,7 @@ import java.time.Duration;
  **/
 public class RedisConfig {
 
-    @Bean
+    /*@Bean
     public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory redisConnectionFactory) {
         RedisSerializer<Object> serializer = redisSerializer();
         RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
@@ -68,6 +68,6 @@ public class RedisConfig {
     @Bean
     public RedisService redisService(){
         return new RedisServiceImpl();
-    }
+    }*/
 
 }

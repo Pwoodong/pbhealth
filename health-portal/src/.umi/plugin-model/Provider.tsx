@@ -3,11 +3,11 @@ import React from 'react';
 import initialState from 'F:/ProjectSpace/GitHub/personal-health/health-portal/src/.umi/plugin-initial-state/models/initialState';
 
 // @ts-ignore
-import Dispatcher from 'F:/ProjectSpace/GitHub/personal-health/health-portal/node_modules/_@umijs_plugin-model@2.5.6@@umijs/plugin-model/lib/helpers/dispatcher';
+import Dispatcher from 'F:/ProjectSpace/GitHub/personal-health/health-portal/node_modules/@umijs/plugin-model/lib/helpers/dispatcher';
 // @ts-ignore
-import Executor from 'F:/ProjectSpace/GitHub/personal-health/health-portal/node_modules/_@umijs_plugin-model@2.5.6@@umijs/plugin-model/lib/helpers/executor';
+import Executor from 'F:/ProjectSpace/GitHub/personal-health/health-portal/node_modules/@umijs/plugin-model/lib/helpers/executor';
 // @ts-ignore
-import { UmiContext } from 'F:/ProjectSpace/GitHub/personal-health/health-portal/node_modules/_@umijs_plugin-model@2.5.6@@umijs/plugin-model/lib/helpers/constant';
+import { UmiContext } from 'F:/ProjectSpace/GitHub/personal-health/health-portal/node_modules/@umijs/plugin-model/lib/helpers/constant';
 
 export const models = { '@@initialState': initialState,  };
 

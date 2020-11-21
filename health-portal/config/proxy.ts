@@ -7,10 +7,11 @@
  */
 export default {
   dev: {
-    '/api/': {
-      target: 'https://preview.pro.ant.design',
+    '/system/api/': {
+      /** target: 'https://preview.pro.ant.design', */
+      target: 'https://localhost:8882/health-system',
       changeOrigin: true,
-      pathRewrite: { '^': '' },
+      pathRewrite: { '^/system/api': '' },
     },
   },
   test: {

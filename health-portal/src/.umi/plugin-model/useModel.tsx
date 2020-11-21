@@ -1,9 +1,9 @@
 // @ts-nocheck
 import { useState, useEffect, useContext, useRef } from 'react';
 // @ts-ignore
-import isEqual from 'F:/ProjectSpace/GitHub/personal-health/health-portal/node_modules/_fast-deep-equal@3.1.1@fast-deep-equal/index.js';
+import isEqual from 'F:/ProjectSpace/GitHub/personal-health/health-portal/node_modules/@umijs/plugin-model/node_modules/fast-deep-equal/index.js';
 // @ts-ignore
-import { UmiContext } from 'F:/ProjectSpace/GitHub/personal-health/health-portal/node_modules/_@umijs_plugin-model@2.5.6@@umijs/plugin-model/lib/helpers/constant';
+import { UmiContext } from 'F:/ProjectSpace/GitHub/personal-health/health-portal/node_modules/@umijs/plugin-model/lib/helpers/constant';
 import { Model, models } from './Provider';
 
 export type Models<T extends keyof typeof models> = Model<T>[T]

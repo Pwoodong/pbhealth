@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { createBrowserHistory } from 'F:/ProjectSpace/GitHub/personal-health/health-portal/node_modules/_@umijs_runtime@3.2.27@@umijs/runtime';
+import { createBrowserHistory } from 'F:/ProjectSpace/GitHub/personal-health/health-portal/node_modules/@umijs/runtime';
 
 let options = {
   "basename": "/"

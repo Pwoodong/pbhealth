@@ -5,7 +5,14 @@ export async function query(): Promise<any> {
 }
 
 export async function queryCurrent(): Promise<any> {
-  return request('/api/currentUser');
+  const userInfo = localStorage.getItem('userInfo');
+  const userId = JSON.parse(userInfo)['userId'];
+  console.log("登录用户ID{"+userId+"}");
+  /** return request('/api/currentUser'); */
+  return request('/ystem/api/sysUser/selectOne', {
+    method: 'POST',
+    data: {"userId":"0"},
+  });
 }
 
 export async function queryNotices(): Promise<any> {

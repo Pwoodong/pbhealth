@@ -43,6 +43,9 @@ const Model: LoginModelType = {
         const urlParams = new URL(window.location.href);
         const params = getPageQuery();
         message.success('🎉 🎉 🎉  登录成功！');
+        /** window.location.href = 'http://localhost:8001/welcome'; */
+        // history.push('/welcome');
+  
         let { redirect } = params as { redirect: string };
         if (redirect) {
           const redirectUrlParams = new URL(redirect);
@@ -57,6 +60,7 @@ const Model: LoginModelType = {
           }
         }
         history.replace(redirect || '/');
+        
       }
     },
 
@@ -76,7 +80,12 @@ const Model: LoginModelType = {
 
   reducers: {
     changeLoginStatus(state, { payload }) {
-      setAuthority(payload.currentAuthority);
+      localStorage.setItem('userInfo', JSON.stringify(payload.message));
+      /** setAuthority(payload.currentAuthority); */
+      const userId = payload.message.userId;
+     
+      console.log("用户权限保持{"+userId+"}");
+      setAuthority("admin");
       return {
         ...state,
         status: payload.status,

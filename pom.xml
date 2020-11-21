@@ -21,6 +21,7 @@
         <module>health-config</module>
         <module>health-calculate</module>
         <module>health-collect</module>
+        <module>health-system</module>
     </modules>
 
     <properties>
@@ -64,6 +65,12 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>5.4.0</version>
         </dependency>
 
     </dependencies>

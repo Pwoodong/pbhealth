@@ -37,6 +37,14 @@ export default defineConfig({
   title: false,
   ignoreMomentLocale: true,
   proxy: proxy[REACT_APP_ENV || 'dev'],
+  /**proxy:{
+    '/health-system/': 'http://localhost:8882/health-system/', 
+    '/system/api':{
+      target: 'https://127.0.0.1:8882/health-system',
+      changeOrigin: true,
+      pathRewrite: { '^/system/api': '' },
+    }
+  },*/
   manifest: {
     basePath: '/',
   },

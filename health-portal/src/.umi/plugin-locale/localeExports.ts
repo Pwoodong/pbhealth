@@ -3,11 +3,11 @@ import {
   createIntl,
   IntlShape,
   MessageDescriptor,
-} from 'F:/ProjectSpace/GitHub/personal-health/health-portal/node_modules/_react-intl@3.12.1@react-intl';
+} from 'F:/ProjectSpace/GitHub/personal-health/health-portal/node_modules/react-intl';
 import { ApplyPluginsType } from 'umi';
 import { event, LANG_CHANGE_EVENT } from './locale';
 // @ts-ignore
-import warning from 'F:/ProjectSpace/GitHub/personal-health/health-portal/node_modules/_warning@4.0.3@warning/warning.js';
+import warning from 'F:/ProjectSpace/GitHub/personal-health/health-portal/node_modules/warning/warning.js';
 
 import { plugin } from '../core/plugin';
 
@@ -34,7 +34,7 @@ export {
   defineMessages,
   injectIntl,
   useIntl,
-} from 'F:/ProjectSpace/GitHub/personal-health/health-portal/node_modules/_react-intl@3.12.1@react-intl';
+} from 'F:/ProjectSpace/GitHub/personal-health/health-portal/node_modules/react-intl';
 
 let g_intl: IntlShape;
 
