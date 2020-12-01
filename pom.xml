@@ -26,6 +26,7 @@
 
     <properties>
         <java.version>8</java.version>
+        <hutool.version>5.4.0</hutool.version>
     </properties>
 
     <dependencies>
@@ -70,7 +71,7 @@
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
-            <version>5.4.0</version>
+            <version>${hutool.version}</version>
         </dependency>
 
     </dependencies>
