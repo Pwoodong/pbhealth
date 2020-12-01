@@ -9,9 +9,9 @@ export async function queryCurrent(): Promise<any> {
   const userId = JSON.parse(userInfo)['userId'];
   console.log("登录用户ID{"+userId+"}");
   /** return request('/api/currentUser'); */
-  return request('/ystem/api/sysUser/selectOne', {
+  return request('/system/api/sysUser/selectOne', {
     method: 'POST',
-    data: {"userId":"0"},
+    data: {"userId":userId},
   });
 }
 

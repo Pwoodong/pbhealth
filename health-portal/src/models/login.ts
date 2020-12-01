@@ -61,6 +61,8 @@ const Model: LoginModelType = {
         }
         history.replace(redirect || '/');
         
+      }else{
+        message.error(response.message);
       }
     },
 

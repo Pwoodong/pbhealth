@@ -9,9 +9,14 @@ export default {
   dev: {
     '/system/api/': {
       /** target: 'https://preview.pro.ant.design', */
-      target: 'https://localhost:8882/health-system',
+      target: 'http://localhost:8882/health-system',
       changeOrigin: true,
       pathRewrite: { '^/system/api': '' },
+    },
+    '/collect/': {
+      target: 'http://127.0.0.1:8880/health-collect',
+      changeOrigin: true,
+      pathRewrite: { '^/collect': '' },
     },
   },
   test: {

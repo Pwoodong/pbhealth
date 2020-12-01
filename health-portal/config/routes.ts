@@ -52,6 +52,12 @@
             component: './ListTableList',
           },
           {
+            name: '运动轨迹',
+            icon: 'table',
+            path: '/track',
+            component: './track',
+          },
+          {
             component: './404',
           },
         ],

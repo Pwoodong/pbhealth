@@ -67,6 +67,13 @@ export function getRoutes() {
             "exact": true
           },
           {
+            "name": "运动轨迹",
+            "icon": "table",
+            "path": "/track",
+            "component": dynamic({ loader: () => import(/* webpackChunkName: 'p__track' */'F:/ProjectSpace/GitHub/personal-health/health-portal/src/pages/track'), loading: LoadingComponent}),
+            "exact": true
+          },
+          {
             "component": dynamic({ loader: () => import(/* webpackChunkName: 'p__404' */'F:/ProjectSpace/GitHub/personal-health/health-portal/src/pages/404'), loading: LoadingComponent}),
             "exact": true
           }
