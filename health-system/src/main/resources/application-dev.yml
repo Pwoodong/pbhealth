@@ -1,0 +1,27 @@
+logging:
+  level:
+    root: info
+    com.jiu: debug
+
+spring:
+  datasource:
+    druid:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3306/running?serverTimezone=UTC&useSSL=false
+      username: root
+      password: 1qaz2wsx
+
+  redis:
+    # Redis服务器地址
+    host: 10.1.1.100
+    # Redis数据库索引（默认为0）
+    database: 0
+    # Redis服务器连接端口
+    port: 6379
+    # Redis服务器连接密码（默认为空）
+    password:
+    # 连接超时时间（毫秒）
+    timeout: 300ms
+
+mybatis:
+  mapper-locations: classpath*:mybatis/mapper/*.xml
