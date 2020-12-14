@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
+
 /**
  * Package com.jiu.collect.controller
  * ClassName DistributeClient.java
@@ -18,8 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class DistributeClientController {
 
-    @Autowired
-    CuratorFramework curatorFramework;
+    private CuratorFramework curatorFramework;
 
     @PostMapping("/stock/deduct")
     public Object reduceStock(Integer id) throws Exception {

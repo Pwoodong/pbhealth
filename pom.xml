@@ -41,6 +41,7 @@
         <swagger2.version>2.9.2</swagger2.version>
         <jackson.version>2.10.1</jackson.version>
         <gpx.version>1.12</gpx.version>
+        <shardingsphere.version>5.0.0-alpha</shardingsphere.version>
     </properties>
 
     <dependencies>
@@ -213,6 +214,19 @@
                 <artifactId>gpx-parser</artifactId>
                 <version>${gpx.version}</version>
             </dependency>
+
+            <!-- sharding sphere -->
+            <dependency>
+                <groupId>org.apache.shardingsphere</groupId>
+                <artifactId>shardingsphere-jdbc-core</artifactId>
+                <version>${shardingsphere.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.shardingsphere</groupId>
+                <artifactId>sharding-jdbc-spring-boot-starter</artifactId>
+                <version>${shardingsphere.version}</version>
+            </dependency>
+
 
         </dependencies>
     </dependencyManagement>

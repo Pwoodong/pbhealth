@@ -4,6 +4,40 @@ logging:
     com.jiu: debug
 
 spring:
+  main:
+    allow-bean-definition-overriding: true
+  shardingsphere:
+    datasource:
+      names:
+        master,slave
+      #主库
+      master:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://192.168.1.211:3306/running?characterEncoding=utf-8
+        username: root
+        password: root
+      #从库
+      slave:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://192.168.1.145:3306/running?characterEncoding=utf-8
+        username: root
+        password: root
+      masterslave:
+        # 读写分离配置
+        load-balance-algorithm-type: round_robin
+        # 最终的数据源名称
+        name: dataSource
+        # 主库数据源名称
+        master-data-source-name: master
+        # 从库数据源名称列表，多个逗号分隔
+        slave-data-source-names: slave
+        props:
+          # 开启SQL显示，默认false
+          sql:
+            show: true
+
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
