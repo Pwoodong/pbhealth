@@ -12,3 +12,7 @@ spring:
     restart:
       enabled: true
 
+mybatis:
+  type-aliases-package: com.jiu.collect.entity
+  mapper-locations: classpath:mapper/*.xml
+

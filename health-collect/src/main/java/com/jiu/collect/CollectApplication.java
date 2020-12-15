@@ -1,17 +1,16 @@
 package com.jiu.collect;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
-import org.springframework.context.annotation.ComponentScan;
 
 /**
  * 启动类
  * @author liaoyj
  * @date 2020-10-21
  **/
-@ComponentScan(basePackages = "com.jiu.*")
-@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
+@MapperScan(basePackages = "com.jiu.collect.mapper")
+@SpringBootApplication
 public class CollectApplication {
 
     public static void main(String[] args) {

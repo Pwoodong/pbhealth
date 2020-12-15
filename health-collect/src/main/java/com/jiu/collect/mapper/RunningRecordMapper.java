@@ -1,4 +1,4 @@
-package com.jiu.collect.mapper.ds1;
+package com.jiu.collect.mapper;
 
 import com.jiu.collect.entity.RunningRecord;
 import org.springframework.stereotype.Repository;
@@ -6,8 +6,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 /**
- * Package com.running.report.dao
- * ClassName ReportDao.java
+ * Package com.jiu.collect.mapper
+ * ClassName RunningRecordMapper.java
  * Description 跑步记录数据接口
  *
  * @author Jy

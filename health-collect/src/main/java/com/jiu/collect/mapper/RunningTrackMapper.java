@@ -1,4 +1,4 @@
-package com.jiu.collect.mapper.ds1;
+package com.jiu.collect.mapper;
 
 import com.jiu.collect.entity.RunningTrack;
 import org.springframework.stereotype.Repository;
@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 /**
- * Package com.jiu.collect.mapper.ds1
+ * Package com.jiu.collect.mapper
  * ClassName RunningTrackMapper.java
  * Description  跑步轨迹数据接口
  *

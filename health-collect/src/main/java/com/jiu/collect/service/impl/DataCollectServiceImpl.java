@@ -2,15 +2,18 @@ package com.jiu.collect.service.impl;
 
 import com.jiu.collect.entity.RunningRecord;
 import com.jiu.collect.entity.RunningTrack;
-import com.jiu.collect.mapper.ds1.RunningRecordMapper;
-import com.jiu.collect.mapper.ds1.RunningTrackMapper;
+import com.jiu.collect.mapper.RunningRecordMapper;
+import com.jiu.collect.mapper.RunningTrackMapper;
 import com.jiu.collect.service.DataCollectService;
 import com.jiu.common.utils.GpxFileParseUtil;
+import com.jiu.common.utils.ObjectToBeanUtil;
 import com.jiu.common.utils.ObjectTransformUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -37,12 +40,30 @@ public class DataCollectServiceImpl implements DataCollectService {
     @Autowired
     private RunningTrackMapper runningTrackMapper;
 
+    @Autowired
+    private RedisTemplate<String, Object> redisTemplate;
+
     /**
      * @see DataCollectService#selectRunningRecord(RunningRecord)
      */
     @Override
     public List<RunningRecord> selectRunningRecord(RunningRecord runningRecord) {
-        return runningRecordMapper.select(runningRecord);
+        String userId = StringUtils.isEmpty(runningRecord.getUserId()) ? "" : String.valueOf(runningRecord.getUserId());
+        String key = userId;
+        if(redisTemplate.hasKey(key)){
+            log.info("redis中查找的信息");
+            List<Object> list = redisTemplate.opsForList().range(key,0,-1);
+            try {
+                return ObjectToBeanUtil.objectToBean(list,RunningRecord.class);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        List<RunningRecord> list = runningRecordMapper.select(runningRecord);
+        redisTemplate.opsForList().leftPushAll(key,list);
+        log.info("mysql中查询的信息存入Redis中");
+        return list;
+        //return runningRecordMapper.select(runningRecord);
     }
 
     /**
