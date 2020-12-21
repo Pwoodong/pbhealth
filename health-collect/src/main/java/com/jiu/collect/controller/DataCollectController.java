@@ -1,7 +1,7 @@
 package com.jiu.collect.controller;
 
-import com.jiu.collect.entity.RunningRecord;
-import com.jiu.collect.service.DataCollectService;
+import com.jiu.api.service.DataCollectService;
+import com.jiu.api.entity.RunningRecord;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

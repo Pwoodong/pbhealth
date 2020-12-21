@@ -1,6 +1,6 @@
 package com.jiu.collect.mapper;
 
-import com.jiu.collect.entity.RunningRecord;
+import com.jiu.api.entity.RunningRecord;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

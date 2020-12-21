@@ -1,12 +1,12 @@
-package com.jiu.collect.service;
+package com.jiu.api.service;
 
-import com.jiu.collect.entity.RunningRecord;
+import com.jiu.api.entity.RunningRecord;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
 /**
- * Package com.jiu.collect.service
+ * Package com.jiu.api.service
  * ClassName DataCollectService.java
  * Description 数据采集接口
  *

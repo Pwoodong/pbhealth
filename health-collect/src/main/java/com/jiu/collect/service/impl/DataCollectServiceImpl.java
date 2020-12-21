@@ -1,17 +1,18 @@
 package com.jiu.collect.service.impl;
 
-import com.jiu.collect.entity.RunningRecord;
+import com.jiu.api.entity.RunningRecord;
 import com.jiu.collect.entity.RunningTrack;
 import com.jiu.collect.mapper.RunningRecordMapper;
 import com.jiu.collect.mapper.RunningTrackMapper;
-import com.jiu.collect.service.DataCollectService;
+import com.jiu.api.service.DataCollectService;
 import com.jiu.common.utils.GpxFileParseUtil;
 import com.jiu.common.utils.ObjectToBeanUtil;
 import com.jiu.common.utils.ObjectTransformUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -31,7 +32,9 @@ import java.util.Map;
  * @date 2020-11-08 16:26
  **/
 @Slf4j
-@Service("dataCollectService")
+//@Service("dataCollectService")
+@DubboService
+@Component
 public class DataCollectServiceImpl implements DataCollectService {
 
     @Autowired

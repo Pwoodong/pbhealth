@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.jiu.calculate.mapper.ds1.RunningRecordMapper">
+<mapper namespace="com.jiu.calculate.mapper.RunningRecordMapper">
 
     <select id="selectRunningRecord" resultType="com.jiu.calculate.entity.RunningRecord">
         select t.id,t.user_id userId,t.type,t.kilometre,t.consume_time consumeTime,

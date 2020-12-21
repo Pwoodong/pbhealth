@@ -1,4 +1,4 @@
-package com.jiu.calculate.mapper.ds1;
+package com.jiu.calculate.mapper;
 
 import com.jiu.calculate.entity.RunningRecord;
 

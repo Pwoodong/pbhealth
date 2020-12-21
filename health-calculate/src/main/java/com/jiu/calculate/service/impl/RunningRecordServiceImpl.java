@@ -1,8 +1,10 @@
 package com.jiu.calculate.service.impl;
 
+import com.jiu.api.service.DataCollectService;
 import com.jiu.calculate.entity.RunningRecord;
-import com.jiu.calculate.mapper.ds1.RunningRecordMapper;
+import com.jiu.calculate.mapper.RunningRecordMapper;
 import com.jiu.calculate.service.RunningRecordService;
+import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +28,9 @@ import java.util.stream.Collectors;
  **/
 @Service("runningRecordService")
 public class RunningRecordServiceImpl implements RunningRecordService {
+
+    @DubboReference
+    DataCollectService dataCollectService;
 
     @Autowired
     private RunningRecordMapper runningRecordMapper;
