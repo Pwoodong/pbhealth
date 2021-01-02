@@ -9,6 +9,7 @@
         t.create_user_id createUserId,t.update_time updateTime,t.update_user_id updateUserId
         from running_record t
         <where>
+            t.status = 0
             <if test="startTime != null and startTime != '' ">
                 and t.running_time >= #{startTime}
             </if>
@@ -16,6 +17,15 @@
                 and  #{endTime} >= t.running_time
             </if>
         </where>
+    </select>
+
+    <select id="findByPageNumSize" resultType="com.jiu.collect.entity.RunningRecord">
+        select t.id,t.user_id userId,t.type,t.kilometre,t.consume_time consumeTime,
+               t.pace,t.calorie,t.climb,t.heart_rate heartRate,t.stride_rate strideRate,
+               t.stride,t.running_time runningTime,t.status,t.create_time createTime,
+               t.create_user_id createUserId,t.update_time updateTime,t.update_user_id updateUserId
+        from running_record t
+        where t.status = 0
     </select>
 
     <insert id="insert" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
@@ -142,6 +152,7 @@
             <if test="updateUserId != null" >
                 update_user_id = #{updateUserId},
             </if>
+            update_time = CURRENT_TIMESTAMP()
         </set>
         where status = '0'
         and id = #{id}
@@ -149,8 +160,17 @@
 
     <update id="delete">
         update running_record
-            set status = '99',
-        where id = #{id}
+            set status = '99'
+        where id = {id}
+    </update>
+
+    <update id="deleteByBatch" parameterType="java.lang.String">
+        update running_record
+        set status = '99'
+        where id in
+        <foreach collection="array" item="ids" open="(" separator="," close=")">
+            #{ids}
+        </foreach>
     </update>
 
 </mapper>

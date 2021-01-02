@@ -8,9 +8,12 @@ import com.jiu.api.service.DataCollectService;
 import com.jiu.common.utils.GpxFileParseUtil;
 import com.jiu.common.utils.ObjectToBeanUtil;
 import com.jiu.common.utils.ObjectTransformUtil;
+import com.jiu.common.utils.PageUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,7 +36,7 @@ import java.util.Map;
  **/
 @Slf4j
 //@Service("dataCollectService")
-@DubboService
+//@DubboService
 @Component
 public class DataCollectServiceImpl implements DataCollectService {
 
@@ -46,6 +49,13 @@ public class DataCollectServiceImpl implements DataCollectService {
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;
 
+    @Override
+    public Map<String,Object> queryAll(RunningRecord runningRecord, Pageable pageable) {
+        List<RunningRecord> list = runningRecordMapper.select(runningRecord);
+        Page<RunningRecord> page = (Page)list;
+        return PageUtil.toPage(page,page.getTotalElements());
+    }
+
     /**
      * @see DataCollectService#selectRunningRecord(RunningRecord)
      */
@@ -53,18 +63,18 @@ public class DataCollectServiceImpl implements DataCollectService {
     public List<RunningRecord> selectRunningRecord(RunningRecord runningRecord) {
         String userId = StringUtils.isEmpty(runningRecord.getUserId()) ? "" : String.valueOf(runningRecord.getUserId());
         String key = userId;
-        if(redisTemplate.hasKey(key)){
-            log.info("redis中查找的信息");
-            List<Object> list = redisTemplate.opsForList().range(key,0,-1);
-            try {
-                return ObjectToBeanUtil.objectToBean(list,RunningRecord.class);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
+//        if(redisTemplate.hasKey(key)){
+//            log.info("redis中查找的信息");
+//            List<Object> list = redisTemplate.opsForList().range(key,0,-1);
+//            try {
+//                return ObjectToBeanUtil.objectToBean(list,RunningRecord.class);
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//        }
         List<RunningRecord> list = runningRecordMapper.select(runningRecord);
-        redisTemplate.opsForList().leftPushAll(key,list);
-        log.info("mysql中查询的信息存入Redis中");
+//        redisTemplate.opsForList().leftPushAll(key,list);
+//        log.info("mysql中查询的信息存入Redis中");
         return list;
         //return runningRecordMapper.select(runningRecord);
     }

@@ -4,6 +4,8 @@ import com.jiu.api.entity.RunningRecord;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.Map;
+import org.springframework.data.domain.Pageable;
 
 /**
  * Package com.jiu.api.service
@@ -17,7 +19,16 @@ import java.util.List;
 public interface DataCollectService {
 
     /**
-     * 新增记录
+     * 分页查询记录
+     *
+     * @param runningRecord 数据
+     * @param pageable
+     * @return Map
+     */
+    Map<String,Object> queryAll(RunningRecord runningRecord, Pageable pageable);
+
+    /**
+     * 查询记录
      *
      * @param runningRecord 数据
      * @return int

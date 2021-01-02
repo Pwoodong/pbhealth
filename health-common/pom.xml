@@ -73,6 +73,10 @@
             <groupId>me.himanshusoni.gpxparser</groupId>
             <artifactId>gpx-parser</artifactId>
         </dependency>
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+        </dependency>
 
     </dependencies>
 

@@ -1,6 +1,9 @@
 package com.jiu.collect.mapper;
 
+import com.github.pagehelper.Page;
 import com.jiu.api.entity.RunningRecord;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -14,7 +17,7 @@ import java.util.List;
  * @version V1.0
  * @date 2019-12-16 14:00
  **/
-@Repository
+@Mapper
 public interface RunningRecordMapper {
 
     /**
@@ -23,6 +26,15 @@ public interface RunningRecordMapper {
      * @return  List<RunningRecord>
      */
     List<RunningRecord> select(RunningRecord runningRecord);
+
+    /**
+     * 分页查询记录
+     * @param   runningRecord
+     * @param   pageSize
+     * @param   pageNum
+     * @return  Page<RunningRecord>
+     */
+    Page<RunningRecord> findByPageNumSize(RunningRecord runningRecord,@Param("pageNum")  int pageNum,@Param("pageSize") int pageSize);
 
     /**
      * 新增记录
@@ -44,5 +56,12 @@ public interface RunningRecordMapper {
      * @return  int
      */
     int delete(RunningRecord runningRecord);
+
+    /**
+     * 删除记录
+     * @param   array   数据
+     * @return  int
+     */
+    int deleteByBatch(String[] array);
 
 }
