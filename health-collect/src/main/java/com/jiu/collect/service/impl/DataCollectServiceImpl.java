@@ -46,9 +46,6 @@ public class DataCollectServiceImpl implements DataCollectService {
     @Autowired
     private RunningTrackMapper runningTrackMapper;
 
-    @Autowired
-    private RedisTemplate<String, Object> redisTemplate;
-
     @Override
     public Map<String,Object> queryAll(RunningRecord runningRecord, Pageable pageable) {
         List<RunningRecord> list = runningRecordMapper.select(runningRecord);

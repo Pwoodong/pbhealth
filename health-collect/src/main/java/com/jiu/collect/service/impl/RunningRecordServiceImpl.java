@@ -1,23 +1,14 @@
 package com.jiu.collect.service.impl;
 
 import com.github.pagehelper.Page;
-import com.github.pagehelper.PageHelper;
 import com.jiu.api.entity.RunningRecord;
-import com.jiu.api.service.DataCollectService;
 import com.jiu.collect.mapper.RunningRecordMapper;
 import com.jiu.collect.service.RunRecordService;
-import com.jiu.common.utils.PageUtil;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Function;
 
 /**
  * Package com.jiu.collect.service.impl

@@ -4,8 +4,8 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageInfo;
 import com.jiu.api.entity.RunningRecord;
 import com.jiu.collect.service.RunRecordService;
+import com.jiu.collect.utils.RedisUtils;
 import com.jiu.common.utils.PageUtil;
-import com.jiu.common.utils.RsaUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Iterator;
 import java.util.Set;
@@ -35,6 +36,9 @@ public class RunRecordController {
     @Autowired
     private HttpServletRequest request;
 
+    @Resource
+    private RedisUtils redisUtils;
+
     @Autowired
     private RunRecordService runRecordService;
 
@@ -42,18 +46,13 @@ public class RunRecordController {
     public ResponseEntity<Object> query(RunningRecord runningRecord, Pageable pageable){
         String token = request.getHeader("Authorization");
         System.out.println("token:"+token);
-        String Cookie = request.getHeader("Cookie");
-        System.out.println("Cookie:"+Cookie);
+        String key = "online-token-" + token.split(" ")[1];
+        Object keyValue = "";
 
-        // 密码解密
-        String privateKey = "MIIBUwIBADANBgkqhkiG9w0BAQEFAASCAT0wggE5AgEAAkEA0vfvyTdGJkdbHkB8mp0f3FE0GYP3AYPaJF7jUd1M0XxFSE2ceK3k2kw20YvQ09NJKk+OMjWQl9WitG9pB6tSCQIDAQABAkA2SimBrWC2/wvauBuYqjCFwLvYiRYqZKThUS3MZlebXJiLB+Ue/gUifAAKIg1avttUZsHBHrop4qfJCwAI0+YRAiEA+W3NK/RaXtnRqmoUUkb59zsZUBLpvZgQPfj1MhyHDz0CIQDYhsAhPJ3mgS64NbUZmGWuuNKp5coY2GIj/zYDMJp6vQIgUueLFXv/eZ1ekgz2Oi67MNCk5jeTF2BurZqNLR3MSmUCIFT3Q6uHMtsB9Eha4u7hS31tj1UWE+D+ADzp59MGnoftAiBeHT7gDMuqeJHPL4b+kC+gzV4FGTfhR9q3tTbklZkD2A==";
-        try {
-            String password = RsaUtils.decryptByPrivateKey(privateKey, "gry35EtIDzyNI9iQwX8HLCv/m/1xf9OO9LVUc9eukL55SG4ywdZQE9x/LiSAdL27nJboFi9JTu1jFzhrv6q2Cw==");
-            System.out.println("password:"+password);
-        } catch (Exception e) {
-            e.printStackTrace();
+        if(redisUtils.hasKey(key)){
+            keyValue = redisUtils.get(key);
         }
-
+        System.out.println("keyValue{}{}"+keyValue);
         Page<RunningRecord> pageList = runRecordService.findByPage(runningRecord,pageable);
         PageInfo<RunningRecord> pageInfo = new PageInfo<>(pageList);
         return new ResponseEntity<>(PageUtil.toPage(pageInfo.getList(),pageInfo.getTotal()), HttpStatus.OK);
