@@ -34,7 +34,7 @@ public interface RunningRecordMapper {
      * @param   pageNum
      * @return  Page<RunningRecord>
      */
-    Page<RunningRecord> findByPageNumSize(RunningRecord runningRecord,@Param("pageNum")  int pageNum,@Param("pageSize") int pageSize);
+    Page<RunningRecord> findByPageNumSize(@Param("data") RunningRecord runningRecord,@Param("pageNum")  int pageNum,@Param("pageSize") int pageSize);
 
     /**
      * 新增记录

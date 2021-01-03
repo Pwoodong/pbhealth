@@ -5,10 +5,13 @@ import com.github.pagehelper.PageInfo;
 import com.jiu.api.entity.RunningRecord;
 import com.jiu.collect.service.RunRecordService;
 import com.jiu.collect.utils.RedisUtils;
+import com.jiu.common.controller.BaseController;
 import com.jiu.common.utils.PageUtil;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -28,31 +31,31 @@ import java.util.Set;
  * @version V1.0
  * @date 2021-01-02 上午11:19
  **/
+@Slf4j
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/runRecord")
-public class RunRecordController {
+public class RunRecordController extends BaseController {
 
     @Autowired
     private HttpServletRequest request;
 
-    @Resource
+    //@Autowired
     private RedisUtils redisUtils;
+
+    @Resource
+    private RedisTemplate<String,Object> redisTemplate;
 
     @Autowired
     private RunRecordService runRecordService;
 
     @GetMapping
     public ResponseEntity<Object> query(RunningRecord runningRecord, Pageable pageable){
-        String token = request.getHeader("Authorization");
-        System.out.println("token:"+token);
-        String key = "online-token-" + token.split(" ")[1];
-        Object keyValue = "";
-
-        if(redisUtils.hasKey(key)){
-            keyValue = redisUtils.get(key);
+        Long userId = getUserId();
+        log.info("userId:"+userId);
+        if(userId != null){
+            runningRecord.setUserId(userId);
         }
-        System.out.println("keyValue{}{}"+keyValue);
         Page<RunningRecord> pageList = runRecordService.findByPage(runningRecord,pageable);
         PageInfo<RunningRecord> pageInfo = new PageInfo<>(pageList);
         return new ResponseEntity<>(PageUtil.toPage(pageInfo.getList(),pageInfo.getTotal()), HttpStatus.OK);
@@ -60,12 +63,22 @@ public class RunRecordController {
 
     @PostMapping
     public ResponseEntity<Object> create(@Validated @RequestBody RunningRecord runningRecord){
+        Long userId = getUserId();
+        log.info("userId:"+userId);
+        if(userId != null){
+            runningRecord.setUserId(userId);
+        }
         runRecordService.insertRunningRecord(runningRecord);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @PutMapping
     public ResponseEntity<Object> update(@RequestBody RunningRecord runningRecord){
+        Long userId = getUserId();
+        log.info("userId:"+userId);
+        if(userId != null){
+            runningRecord.setUserId(userId);
+        }
         runRecordService.updateRunningRecord(runningRecord);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

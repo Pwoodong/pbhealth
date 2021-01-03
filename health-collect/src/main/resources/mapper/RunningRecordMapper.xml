@@ -25,7 +25,12 @@
                t.stride,t.running_time runningTime,t.status,t.create_time createTime,
                t.create_user_id createUserId,t.update_time updateTime,t.update_user_id updateUserId
         from running_record t
-        where t.status = 0
+        <where>
+            t.status = 0
+            <if test="data.userId != null and data.userId != '' ">
+                and t.user_id = #{data.userId}
+            </if>
+        </where>
     </select>
 
     <insert id="insert" useGeneratedKeys="true" keyProperty="id" keyColumn="id">

@@ -20,7 +20,6 @@ import java.util.concurrent.TimeUnit;
  **/
 public class RedisServiceImpl implements RedisService {
 
-    @Autowired
     private RedisTemplate<String, Object> redisTemplate;
 
     @Override

@@ -5,7 +5,6 @@ import com.google.common.collect.Sets;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.Cursor;
@@ -21,13 +20,13 @@ import java.util.concurrent.TimeUnit;
 /**
  * @author /
  */
-@Component
+//@Component
 @SuppressWarnings({"unchecked", "all"})
 public class RedisUtils {
 
     private static final Logger log = LoggerFactory.getLogger(RedisUtils.class);
 
-    @Resource
+    //@Autowired
     private RedisTemplate<Object, Object> redisTemplate;
 
     private String onlineKey = "online-token-";
