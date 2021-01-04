@@ -115,7 +115,7 @@ public class DataCollectServiceImpl implements DataCollectService {
             InputStream inputStream = file.getInputStream();
             List<Map<String,Object>> mapList = GpxFileParseUtil.gpxParse(inputStream);
             List<RunningTrack> insertList = ObjectTransformUtil.setList(mapList,RunningTrack.class);
-            count = runningTrackMapper.insertBatch(insertList);
+            //count = runningTrackMapper.insertBatch(insertList);
         } catch (IOException e) {
             log.error("解析文件出现异常."+e.getMessage());
         }

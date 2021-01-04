@@ -3,8 +3,7 @@ package com.jiu.collect.service;
 import com.github.pagehelper.Page;
 import com.jiu.api.entity.RunningRecord;
 import org.springframework.data.domain.Pageable;
-
-import java.util.List;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * Package com.jiu.collect.service
@@ -19,16 +18,43 @@ public interface RunRecordService {
 
     /**
      * 分页查询记录
-     *
-     * @param  pageable 数据
+     * @param  runningRecord 数据
+     * @param  pageable 分页数据
      * @return List
      */
     Page<RunningRecord> findByPage(RunningRecord runningRecord,Pageable pageable);
 
+    /**
+     * 新增记录
+     *
+     * @param  runningRecord 数据
+     * @return int
+     */
     int insertRunningRecord(RunningRecord runningRecord);
 
+    /**
+     * 修改记录
+     *
+     * @param  runningRecord 数据
+     * @return int
+     */
     int updateRunningRecord(RunningRecord runningRecord);
 
+    /**
+     * 删除记录
+     *
+     * @param  array 数据
+     * @return int
+     */
     int deleteRunningRecord(String[] array);
+
+    /**
+     * 上传记录
+     *
+     * @param  file   文件数据
+     * @param  userId 用户Id
+     * @return int
+     */
+    int upload(MultipartFile file, Long userId);
 
 }

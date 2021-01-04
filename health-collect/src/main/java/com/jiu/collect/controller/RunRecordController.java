@@ -4,7 +4,6 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageInfo;
 import com.jiu.api.entity.RunningRecord;
 import com.jiu.collect.service.RunRecordService;
-import com.jiu.collect.utils.RedisUtils;
 import com.jiu.common.controller.BaseController;
 import com.jiu.common.utils.PageUtil;
 import lombok.RequiredArgsConstructor;
@@ -16,9 +15,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -40,9 +42,6 @@ public class RunRecordController extends BaseController {
     @Autowired
     private HttpServletRequest request;
 
-    //@Autowired
-    private RedisUtils redisUtils;
-
     @Resource
     private RedisTemplate<String,Object> redisTemplate;
 
@@ -61,12 +60,17 @@ public class RunRecordController extends BaseController {
         return new ResponseEntity<>(PageUtil.toPage(pageInfo.getList(),pageInfo.getTotal()), HttpStatus.OK);
     }
 
+    @GetMapping(value = "/download")
+    public void download(HttpServletResponse response, RunningRecord runningRecord) throws IOException {
+    }
+
     @PostMapping
     public ResponseEntity<Object> create(@Validated @RequestBody RunningRecord runningRecord){
         Long userId = getUserId();
         log.info("userId:"+userId);
         if(userId != null){
             runningRecord.setUserId(userId);
+            runningRecord.setCreateUserId(userId);
         }
         runRecordService.insertRunningRecord(runningRecord);
         return new ResponseEntity<>(HttpStatus.CREATED);
@@ -78,6 +82,7 @@ public class RunRecordController extends BaseController {
         log.info("userId:"+userId);
         if(userId != null){
             runningRecord.setUserId(userId);
+            runningRecord.setUpdateUserId(userId);
         }
         runRecordService.updateRunningRecord(runningRecord);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -85,6 +90,13 @@ public class RunRecordController extends BaseController {
 
     @DeleteMapping
     public ResponseEntity<Object> delete(@RequestBody Set<Long> ids){
+        RunningRecord runningRecord = new RunningRecord();
+        Long userId = getUserId();
+        log.info("userId:"+userId);
+        if(userId != null){
+            runningRecord.setUserId(userId);
+            runningRecord.setUpdateUserId(userId);
+        }
         String[] array = new String[ids.size()];
         Iterator<Long> it = ids.iterator();
         int i = 0;
@@ -94,6 +106,14 @@ public class RunRecordController extends BaseController {
         }
         runRecordService.deleteRunningRecord(array);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @PostMapping("upload")
+    public ResponseEntity<Object> upload(@RequestParam("file") MultipartFile file){
+        Long userId = getUserId();
+        log.info("userId:"+userId);
+        runRecordService.upload(file,userId);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
 }

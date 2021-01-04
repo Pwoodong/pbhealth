@@ -1,6 +1,7 @@
 package com.jiu.collect.mapper;
 
 import com.jiu.collect.entity.RunningTrack;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -36,7 +37,7 @@ public interface RunningTrackMapper {
      * @param   list   数据
      * @return  int
      */
-    int insertBatch(List<RunningTrack> list);
+    int insertBatch(@Param("userId")Long userId, @Param("list")List<RunningTrack> list);
 
     /**
      * 修改记录

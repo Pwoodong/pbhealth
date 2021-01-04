@@ -76,60 +76,53 @@
     </insert>
 
     <insert id="insertBatch" >
-        insert into running_track
-        <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="userId != null">
-                user_id,
-            </if>
-            <if test="type != null">
-                type,
-            </if>
-            <if test="longitude != null">
-                longitude,
-            </if>
-            <if test="latitude != null">
-                latitude,
-            </if>
-            <if test="heartRate != null">
-                heart_rate,
-            </if>
-            <if test="elevation != null">
-                elevation,
-            </if>
-            <if test="runningTime != null">
-                running_time,
-            </if>
-            <if test="createUserId != null">
-                create_user_id,
-            </if>
-            status,create_time
-        </trim>
+        insert into running_track (
+            user_id,create_user_id,type,longitude,latitude,heartrate,elevation,running_time,status,create_time
+        )
         values
         <foreach collection="list" item="item" index="index" separator=",">
             <trim prefix="(" suffix=")" suffixOverrides=",">
-                <if test="item.userId != null">
-                    #{item.userId,jdbcType=INTEGER},
+                <if test="userId != null">
+                    #{userId},#{userId},
+                </if>
+                <if test="userId == null">
+                    0,0,
                 </if>
                 <if test="item.type != null">
                     #{item.type,jdbcType=VARCHAR},
                 </if>
+                <if test="item.type == null">
+                    '01',
+                </if>
                 <if test="item.longitude != null">
                     #{item.longitude,jdbcType=VARCHAR},
+                </if>
+                <if test="item.longitude == null">
+                    null,
                 </if>
                 <if test="item.latitude != null">
                     #{item.latitude,jdbcType=VARCHAR},
                 </if>
+                <if test="item.latitude == null">
+                    null,
+                </if>
                 <if test="item.heartRate != null">
                     #{item.heartRate,jdbcType=VARCHAR},
+                </if>
+                <if test="item.heartRate == null">
+                    null,
                 </if>
                 <if test="item.elevation != null">
                     #{item.elevation,jdbcType=VARCHAR},
                 </if>
+                <if test="item.elevation == null">
+                    null,
+                </if>
                 <if test="item.runningTime != null">
                     #{item.runningTime,jdbcType=VARCHAR},
                 </if>
-                <if test="item.createUserId != null">
-                    #{item.createUserId,jdbcType=INTEGER},
+                <if test="item.runningTime == null">
+                    null,
                 </if>
                 0,CURRENT_TIMESTAMP()
             </trim>
