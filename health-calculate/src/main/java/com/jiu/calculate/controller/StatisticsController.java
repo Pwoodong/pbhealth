@@ -1,7 +1,7 @@
 package com.jiu.calculate.controller;
 
-import com.jiu.calculate.entity.RunningRecord;
-import com.jiu.calculate.service.RunningRecordService;
+import com.jiu.api.entity.RunningRecord;
+import com.jiu.calculate.service.StatisticsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,16 +21,16 @@ import java.util.Map;
  * @date 2019-12-16 13:51
  **/
 @RestController
-@RequestMapping("runningRecordController")
-public class RunningRecordController {
+@RequestMapping("statistics")
+public class StatisticsController {
 
     @Autowired
-    private RunningRecordService runningRecordService;
+    private StatisticsService statisticsService;
 
     @PostMapping("getRecordList")
     public List<RunningRecord> getRecordList(String userId){
         RunningRecord record = new RunningRecord();
-        List<RunningRecord> list = runningRecordService.selectRunningRecord(record);
+        List<RunningRecord> list = statisticsService.selectRunningRecord(record);
         return list;
     }
 
@@ -39,9 +39,9 @@ public class RunningRecordController {
         Map<String,Object> resultMap = new HashMap<>(3);
         RunningRecord record = new RunningRecord();
         record.setUserId(userId);
-        List<RunningRecord> weekList = runningRecordService.selectWeekRecord(record);
-        List<RunningRecord> monthList = runningRecordService.selectMonthRecord(record);
-        Map<String, Object> sumMap = runningRecordService.summaryCalculation(record);
+        Map<String,Object> weekList = statisticsService.selectWeekRecord(record);
+        Map<String,Object> monthList = statisticsService.selectYearRecord(record);
+        Map<String, Object> sumMap = statisticsService.summaryCalculation(record);
         resultMap.put("weekList",weekList);
         resultMap.put("monthList",monthList);
         resultMap.put("sum",sumMap);
@@ -52,7 +52,7 @@ public class RunningRecordController {
     public Map<String, Object> sum(Long userId){
         RunningRecord record = new RunningRecord();
         record.setUserId(userId);
-        Map<String, Object> list = runningRecordService.summaryCalculation(record);
+        Map<String, Object> list = statisticsService.summaryCalculation(record);
         return list;
     }
 

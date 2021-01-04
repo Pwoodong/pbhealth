@@ -14,7 +14,7 @@ import java.util.Date;
  * @date 2019-12-07 22:20
  **/
 @Data
-public class RunningRecord {
+public class RunningRecord extends BaseEntity {
     /** ID */
     private Long id;
     /** 用户ID */
@@ -51,11 +51,5 @@ public class RunningRecord {
     private Date updateTime;
     /** 修改人 */
     private Long updateUserId;
-
-    /** 扩展 */
-    /** 开始时间 */
-    private String startTime;
-    /** 结束时间 */
-    private String endTime;
 
 }

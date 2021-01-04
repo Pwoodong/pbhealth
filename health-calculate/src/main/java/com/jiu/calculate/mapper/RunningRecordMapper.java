@@ -1,6 +1,7 @@
 package com.jiu.calculate.mapper;
 
-import com.jiu.calculate.entity.RunningRecord;
+import com.jiu.api.entity.RunningRecord;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
@@ -13,6 +14,7 @@ import java.util.List;
  * @version V1.0
  * @date 2019-12-16 14:00
  **/
+@Mapper
 public interface RunningRecordMapper {
 
     /**
@@ -21,5 +23,12 @@ public interface RunningRecordMapper {
      * @return  List<RunningRecord>
      */
     List<RunningRecord> selectRunningRecord(RunningRecord runningRecord);
+
+    /**
+     * 查询年度跑步记录
+     * @param   runningRecord   跑步记录
+     * @return  List<RunningRecord>
+     */
+    List<RunningRecord> selectMonthRunningRecord(RunningRecord runningRecord);
 
 }

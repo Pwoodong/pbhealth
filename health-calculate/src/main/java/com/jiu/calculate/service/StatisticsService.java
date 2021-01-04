@@ -1,7 +1,6 @@
 package com.jiu.calculate.service;
 
-
-import com.jiu.calculate.entity.RunningRecord;
+import com.jiu.api.entity.RunningRecord;
 
 import java.util.List;
 import java.util.Map;
@@ -15,7 +14,7 @@ import java.util.Map;
  * @version V1.0
  * @date 2019-12-16 14:00
  **/
-public interface RunningRecordService {
+public interface StatisticsService {
 
     /**
      * 查询跑步记录
@@ -39,7 +38,7 @@ public interface RunningRecordService {
      * @param runningRecord 入参
      * @return List<RunningRecord>     跑步记录列表
      */
-    List<RunningRecord> selectWeekRecord(RunningRecord runningRecord);
+    Map<String,Object> selectWeekRecord(RunningRecord runningRecord);
 
     /**
      * 查询月记录
@@ -55,7 +54,7 @@ public interface RunningRecordService {
      * @param runningRecord 入参
      * @return List<RunningRecord>     跑步记录列表
      */
-    List<RunningRecord> selectYearRecord(RunningRecord runningRecord);
+    Map<String,Object> selectYearRecord(RunningRecord runningRecord);
 
     /**
      * 汇总计算
