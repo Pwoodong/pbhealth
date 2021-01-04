@@ -19,6 +19,8 @@ public class RunningRecord {
     private Long id;
     /** 用户ID */
     private Long userId;
+    /** 用户名称 */
+    private String userName;
     /** 类型 */
     private String type;
     /** 公里数 */
