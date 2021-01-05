@@ -2,6 +2,9 @@ package com.jiu.calculate.controller;
 
 import com.jiu.api.entity.RunningRecord;
 import com.jiu.calculate.service.StatisticsService;
+import com.jiu.common.controller.BaseController;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,9 +23,11 @@ import java.util.Map;
  * @version V1.0
  * @date 2019-12-16 13:51
  **/
+@Slf4j
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("statistics")
-public class StatisticsController {
+public class StatisticsController extends BaseController {
 
     @Autowired
     private StatisticsService statisticsService;
@@ -35,9 +40,14 @@ public class StatisticsController {
     }
 
     @PostMapping("healthReport")
-    public Map<String, Object> getHealthReport(Long userId){
+    public Map<String, Object> getHealthReport(){
         Map<String,Object> resultMap = new HashMap<>(3);
         RunningRecord record = new RunningRecord();
+        Long userId = getUserId();
+        log.info("userId:"+userId);
+        if(userId != null){
+            record.setUserId(userId);
+        }
         record.setUserId(userId);
         Map<String,Object> weekList = statisticsService.selectWeekRecord(record);
         Map<String,Object> monthList = statisticsService.selectYearRecord(record);
@@ -49,9 +59,13 @@ public class StatisticsController {
     }
 
     @PostMapping("sum")
-    public Map<String, Object> sum(Long userId){
+    public Map<String, Object> sum(){
         RunningRecord record = new RunningRecord();
-        record.setUserId(userId);
+        Long userId = getUserId();
+        log.info("userId:"+userId);
+        if(userId != null){
+            record.setUserId(userId);
+        }
         Map<String, Object> list = statisticsService.summaryCalculation(record);
         return list;
     }

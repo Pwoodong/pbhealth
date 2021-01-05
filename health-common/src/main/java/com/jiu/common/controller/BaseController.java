@@ -55,7 +55,9 @@ public abstract class BaseController {
         if(null != getRequest().getHeader("Authorization")){
             String token = getRequest().getHeader("Authorization");
             String key = "online-token-" + token.split(" ")[1];
+            log.info("key:"+key);
             Object obj = null;
+            log.info("key is exist:"+redisTemplate.hasKey(key));
             if(redisTemplate.hasKey(key)){
                 obj = redisTemplate.opsForValue().get(key);
             }
