@@ -17,11 +17,11 @@
     <packaging>pom</packaging>
 	
 	<modules>
-        <module>health-common</module>
-        <module>health-api</module>
-        <module>health-config</module>
-        <module>health-calculate</module>
-        <module>health-collect</module>
+        <module>pbh-common</module>
+        <module>pbh-api</module>
+        <module>pbh-config</module>
+        <module>pbh-calculate</module>
+        <module>pbh-collect</module>
     </modules>
 
     <properties>

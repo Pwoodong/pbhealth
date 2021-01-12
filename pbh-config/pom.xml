@@ -3,14 +3,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <groupId>com.pbh</groupId>
-        <artifactId>personal-health</artifactId>
+        <artifactId>pb-health</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.pbh</groupId>
-    <artifactId>health-config</artifactId>
+    <artifactId>pbh-config</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>health-config</name>
+    <name>pbh-config</name>
     <description>配置</description>
     <packaging>jar</packaging>
 

@@ -3,27 +3,27 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <groupId>com.pbh</groupId>
-        <artifactId>personal-health</artifactId>
+        <artifactId>pb-health</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.pbh</groupId>
-    <artifactId>health-calculate</artifactId>
+    <artifactId>pbh-collect</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>health-calculate</name>
-    <description>计算</description>
+    <name>pbh-collect</name>
+    <description>采集</description>
 
     <dependencies>
 
         <dependency>
             <groupId>com.pbh</groupId>
-            <artifactId>health-common</artifactId>
+            <artifactId>pbh-common</artifactId>
             <version>1.0.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>
             <groupId>com.pbh</groupId>
-            <artifactId>health-api</artifactId>
+            <artifactId>pbh-api</artifactId>
             <version>1.0.0-SNAPSHOT</version>
         </dependency>
 
@@ -94,7 +94,6 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-pool2</artifactId>
         </dependency>
-
         <!--dubbo-->
         <dependency>
             <groupId>org.apache.dubbo</groupId>

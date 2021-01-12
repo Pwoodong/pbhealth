@@ -3,19 +3,18 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <groupId>com.pbh</groupId>
-        <artifactId>personal-health</artifactId>
+        <artifactId>pb-health</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.pbh</groupId>
-    <artifactId>health-api</artifactId>
+    <artifactId>pbh-api</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>health-api </name>
+    <name>pbh-api </name>
     <description>公共API</description>
     <packaging>jar</packaging>
 
     <dependencies>
-
 
         <dependency>
             <groupId>org.springframework.data</groupId>
