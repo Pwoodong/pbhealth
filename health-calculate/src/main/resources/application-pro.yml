@@ -1,7 +1,7 @@
 logging:
   level:
     root: error
-    com.jiu: info
+    com.pbh: info
 
 spring:
   main:

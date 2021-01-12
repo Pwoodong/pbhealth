@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.jiu.calculate.mapper.RunningRecordMapper">
+<mapper namespace="com.pbh.calculate.mapper.RunningRecordMapper">
 
-    <select id="selectRunningRecord" resultType="com.jiu.api.entity.RunningRecord">
+    <select id="selectRunningRecord" resultType="com.pbh.api.entity.RunningRecord">
         select t.id,t.user_id userId,t.type,IFNULL(t.kilometre,0) kilometre,IFNULL(t.consume_time,0) consumeTime,
         IFNULL(t.pace,0) pace,IFNULL(t.calorie,0) calorie,IFNULL(t.climb,0) climb,t.heart_rate heartRate,t.stride_rate strideRate,
                t.stride,t.running_time runningTime,t.status,t.create_time createTime,
@@ -23,7 +23,7 @@
     </select>
 
     <!-- 健康记录月度汇总 -->
-    <select id="selectMonthRunningRecord" resultType="com.jiu.api.entity.RunningRecord">
+    <select id="selectMonthRunningRecord" resultType="com.pbh.api.entity.RunningRecord">
         SELECT
             t.user_id userId,
             date_format( t.running_time, '%Y-%m' ) runningTime,

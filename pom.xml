@@ -9,8 +9,8 @@
         <version>2.1.6.RELEASE</version>
         <relativePath/>
     </parent>
-    <groupId>com.jiu</groupId>
-    <artifactId>personal-health</artifactId>
+    <groupId>com.pbh</groupId>
+    <artifactId>pb-health</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <name>pb-health</name>
     <description>运动健康</description>
@@ -96,7 +96,7 @@
         <dependencies>
             <!-- 通用模块 -->
             <dependency>
-                <groupId>com.jiu</groupId>
+                <groupId>com.pbh</groupId>
                 <artifactId>health-common</artifactId>
                 <version>${common.version}</version>
             </dependency>

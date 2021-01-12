@@ -1,7 +1,7 @@
 logging:
   level:
     root: info
-    com.jiu: debug
+    com.pbh: debug
 
 spring:
   main:

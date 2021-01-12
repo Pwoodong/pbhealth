@@ -13,7 +13,7 @@ spring:
       enabled: true
 
 mybatis:
-  type-aliases-package: com.jiu.collect.entity
+  type-aliases-package: com.pbh.collect.entity
   mapper-locations: classpath:mapper/*.xml
 pagehelper:
   helper-dialect: mysql # 指定数据库类型
