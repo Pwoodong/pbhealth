@@ -119,7 +119,13 @@ public class RunRecordController extends BaseController {
     public ResponseEntity<Object> upload(@RequestParam("file") MultipartFile file){
         Long userId = getUserId();
         log.info("userId:"+userId);
-        runRecordService.upload(file,userId);
+
+        String contentType = file.getContentType();
+        if(contentType.startsWith("image")){
+            runRecordService.uploadOcr(file,userId);
+        }else {
+            runRecordService.upload(file,userId);
+        }
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 

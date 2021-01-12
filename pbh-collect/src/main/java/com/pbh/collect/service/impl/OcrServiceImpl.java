@@ -59,21 +59,38 @@ public class OcrServiceImpl implements OcrService {
         JSONArray a = JSONArray.parseArray(sb);
         for (int i = 0; i < a.size(); i++) {
             JSONObject obj = (JSONObject) a.get(i);
+
             if ("户外跑".equals(obj.getString("words"))) {
                 map.put("runningTime", a.getJSONObject(i + 2).getString("words"));
             }
 
-            if ("公里".equals(obj.getString("words"))) {
+            if (obj.getString("words").startsWith("km")) {
                 map.put("kilometre", a.getJSONObject(i - 1).getString("words"));
-                map.put("consumeTime", a.getJSONObject(i + 1).getString("words"));
-                map.put("pace", a.getJSONObject(i + 2).getString("words"));
-                map.put("calorie", a.getJSONObject(i + 3).getString("words"));
+                map.put("runningTime", a.getJSONObject(i - 2).getString("words"));
+            }
+
+            if ("运动用时".equals(obj.getString("words"))) {
+                map.put("consumeTime", a.getJSONObject(i - 3).getString("words"));
+            }
+
+            if ("平均配速".equals(obj.getString("words"))) {
+                map.put("pace", a.getJSONObject(i - 3).getString("words"));
+            }
+
+            if ("消耗".equals(obj.getString("words"))) {
+                map.put("calorie", a.getJSONObject(i - 3).getString("words"));
             }
 
             if ("平均心率".equals(obj.getString("words"))) {
                 map.put("heartRate", a.getJSONObject(i - 3).getString("words"));
-                map.put("strideRate", a.getJSONObject(i - 2).getString("words"));
-                map.put("stride", a.getJSONObject(i - 1).getString("words"));
+            }
+
+            if ("平均步频".equals(obj.getString("words"))) {
+                map.put("strideRate", a.getJSONObject(i - 3).getString("words"));
+            }
+
+            if ("平均步幅".equals(obj.getString("words"))) {
+                map.put("stride", a.getJSONObject(i - 3).getString("words"));
             }
 
         }

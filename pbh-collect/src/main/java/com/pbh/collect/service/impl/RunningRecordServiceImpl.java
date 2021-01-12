@@ -1,18 +1,24 @@
 package com.pbh.collect.service.impl;
 
+import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.Page;
 import com.pbh.api.entity.RunningRecord;
 import com.pbh.collect.entity.RunningTrack;
 import com.pbh.collect.mapper.RunningRecordMapper;
 import com.pbh.collect.mapper.RunningTrackMapper;
+import com.pbh.collect.service.OcrService;
 import com.pbh.collect.service.RunRecordService;
 import com.pbh.common.utils.GpxFileParseUtil;
 import com.pbh.common.utils.LatAndLonCalculateDistance;
 import com.pbh.common.utils.ObjectTransformUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
@@ -43,6 +49,9 @@ public class RunningRecordServiceImpl implements RunRecordService {
 
     @Resource
     private RunningTrackMapper runningTrackMapper;
+
+    @Autowired
+    private OcrService ocrService;
 
     /**
      * @see RunRecordService#findByPage(RunningRecord,Pageable)
@@ -132,7 +141,7 @@ public class RunningRecordServiceImpl implements RunRecordService {
                 runningRecord.setUserId(userId);
                 runningRecord.setType("01");
                 runningRecord.setKilometre(kilometre);
-                runningRecord.setConsumeTime(consumeTime);
+                runningRecord.setConsumeTime(consumeTime.toString());
                 runningRecord.setPace(String.valueOf(pace));
                 runningRecord.setRunningTime(runStartTime);
                 runningRecord.setClimb(climb);
@@ -141,6 +150,47 @@ public class RunningRecordServiceImpl implements RunRecordService {
             }
         } catch (IOException e) {
             log.error("解析文件出现异常."+e.getMessage());
+        }
+        return count;
+    }
+
+    /**
+     * @see RunRecordService#uploadOcr(MultipartFile,Long)
+     */
+    @Override
+    public int uploadOcr(MultipartFile file, Long userId){
+        int count = 1;
+        try {
+            Map<String,Object> resultMap = ocrService.takePictureInformation(file);
+            log.info("文件内容【"+ JSON.toJSONString(resultMap)+"】");
+            RunningRecord runningRecord = new RunningRecord();
+            runningRecord.setType("01");
+            if(resultMap.containsKey("kilometre")){
+                runningRecord.setKilometre(Double.parseDouble(resultMap.get("kilometre").toString()));
+            }
+            if(resultMap.containsKey("consumeTime")){
+                runningRecord.setConsumeTime(resultMap.get("consumeTime").toString());
+            }
+            if(resultMap.containsKey("pace")){
+                runningRecord.setPace(resultMap.get("pace").toString());
+            }
+            if(resultMap.containsKey("calorie")){
+                runningRecord.setCalorie(Double.parseDouble(resultMap.get("calorie").toString()));
+            }
+            if(resultMap.containsKey("heartRate")){
+                runningRecord.setHeartRate(Double.parseDouble(resultMap.get("heartRate").toString()));
+            }
+            if(resultMap.containsKey("strideRate")){
+                runningRecord.setStrideRate(resultMap.get("strideRate").toString());
+            }
+            if(resultMap.containsKey("stride")){
+                runningRecord.setStride(resultMap.get("stride").toString());
+            }
+            runningRecord.setUserId(userId);
+            runningRecord.setCreateUserId(userId);
+            runningRecordMapper.insert(runningRecord);
+        } catch (Exception e) {
+            log.error("上传图片文件识别出现异常."+e.getMessage());
         }
         return count;
     }

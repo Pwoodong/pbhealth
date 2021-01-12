@@ -57,4 +57,13 @@ public interface RunRecordService {
      */
     int upload(MultipartFile file, Long userId);
 
+    /**
+     * 上传图片记录
+     *
+     * @param  file   文件数据
+     * @param  userId 用户Id
+     * @return int
+     */
+    int uploadOcr(MultipartFile file, Long userId);
+
 }
