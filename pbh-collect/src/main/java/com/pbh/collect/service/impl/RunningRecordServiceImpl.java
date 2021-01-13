@@ -3,6 +3,7 @@ package com.pbh.collect.service.impl;
 import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.pbh.api.entity.RunningRecord;
 import com.pbh.collect.entity.RunningTrack;
 import com.pbh.collect.mapper.RunningRecordMapper;
@@ -59,10 +60,12 @@ public class RunningRecordServiceImpl implements RunRecordService {
      * @see RunRecordService#findByPage(RunningRecord,Pageable)
      */
     @Override
-    public Page<RunningRecord> findByPage(RunningRecord runningRecord,Pageable pageable) {
+    public PageInfo findByPage(RunningRecord runningRecord,Pageable pageable) {
         log.info("分页入参："+pageable.getPageNumber()+","+pageable.getPageSize());
         PageHelper.startPage(pageable.getPageNumber(),pageable.getPageSize());
-        return runningRecordMapper.findByPageNumSize(runningRecord,pageable.getPageNumber(),pageable.getPageSize());
+        List<RunningRecord> list = runningRecordMapper.findByPageNumSize(runningRecord);
+        PageHelper.clearPage();
+        return new PageInfo(list);
     }
 
     /**

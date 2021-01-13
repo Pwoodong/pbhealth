@@ -28,11 +28,9 @@ public interface RunningRecordMapper {
     /**
      * 分页查询记录
      * @param   runningRecord
-     * @param   pageSize
-     * @param   pageNum
      * @return  Page<RunningRecord>
      */
-    Page<RunningRecord> findByPageNumSize(@Param("data") RunningRecord runningRecord,@Param("num")  int pageNum,@Param("size") int pageSize);
+    List<RunningRecord> findByPageNumSize(@Param("data") RunningRecord runningRecord);
 
     /**
      * 新增记录

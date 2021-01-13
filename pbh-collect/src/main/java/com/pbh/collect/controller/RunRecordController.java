@@ -62,8 +62,8 @@ public class RunRecordController extends BaseController {
         if(userId != null){
             runningRecord.setUserId(userId);
         }
-        Page<RunningRecord> pageList = runRecordService.findByPage(runningRecord,pageable);
-        PageInfo<RunningRecord> pageInfo = new PageInfo<>(pageList);
+        PageInfo<RunningRecord> pageInfo = runRecordService.findByPage(runningRecord,pageable);
+        //PageInfo<RunningRecord> pageInfo = new PageInfo<>(pageList);
         return new ResponseEntity<>(PageUtil.toPage(pageInfo.getList(),pageInfo.getTotal()), HttpStatus.OK);
     }
 

@@ -26,7 +26,7 @@ public class RunningRecord extends BaseEntity {
     /** 公里数 */
     private Double kilometre;
     /** 耗时 */
-    private Double consumeTime;
+    private String consumeTime;
     /** 配速 */
     private String pace;
     /** 卡路里 */
