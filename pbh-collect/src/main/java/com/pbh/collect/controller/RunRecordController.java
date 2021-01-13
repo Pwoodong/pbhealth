@@ -146,7 +146,7 @@ public class RunRecordController extends BaseController {
             }
             System.out.println("文件内容【"+ JSON.toJSONString(resultMap)+"】");
             RunningRecord runningRecord = new RunningRecord();
-            runningRecord.setType("1");
+            runningRecord.setType("01");
             if(resultMap.containsKey("kilometre")){
                 runningRecord.setKilometre(Double.parseDouble(resultMap.get("kilometre").toString()));
             }

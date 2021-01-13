@@ -16,7 +16,6 @@ import java.util.List;
  * @version V1.0
  * @date 2019-12-16 14:00
  **/
-@Mapper
 public interface RunningRecordMapper {
 
     /**
@@ -33,7 +32,7 @@ public interface RunningRecordMapper {
      * @param   pageNum
      * @return  Page<RunningRecord>
      */
-    Page<RunningRecord> findByPageNumSize(@Param("data") RunningRecord runningRecord,@Param("pageNum")  int pageNum,@Param("pageSize") int pageSize);
+    Page<RunningRecord> findByPageNumSize(@Param("data") RunningRecord runningRecord,@Param("num")  int pageNum,@Param("size") int pageSize);
 
     /**
      * 新增记录

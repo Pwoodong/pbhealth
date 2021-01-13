@@ -2,12 +2,14 @@ package com.pbh.collect.service.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import com.pbh.api.entity.RunningRecord;
 import com.pbh.collect.entity.RunningTrack;
 import com.pbh.collect.mapper.RunningRecordMapper;
 import com.pbh.collect.mapper.RunningTrackMapper;
 import com.pbh.collect.service.OcrService;
 import com.pbh.collect.service.RunRecordService;
+import com.pbh.collect.utils.TimeUtil;
 import com.pbh.common.utils.GpxFileParseUtil;
 import com.pbh.common.utils.LatAndLonCalculateDistance;
 import com.pbh.common.utils.ObjectTransformUtil;
@@ -58,8 +60,8 @@ public class RunningRecordServiceImpl implements RunRecordService {
      */
     @Override
     public Page<RunningRecord> findByPage(RunningRecord runningRecord,Pageable pageable) {
-        //PageHelper.startPage(pageable.getPageNumber(),pageable.getPageSize());
-        System.out.println("分页入参："+pageable.getPageNumber()+","+pageable.getPageSize());
+        log.info("分页入参："+pageable.getPageNumber()+","+pageable.getPageSize());
+        PageHelper.startPage(pageable.getPageNumber(),pageable.getPageSize());
         return runningRecordMapper.findByPageNumSize(runningRecord,pageable.getPageNumber(),pageable.getPageSize());
     }
 
@@ -185,6 +187,10 @@ public class RunningRecordServiceImpl implements RunRecordService {
             }
             if(resultMap.containsKey("stride")){
                 runningRecord.setStride(resultMap.get("stride").toString());
+            }
+            if(resultMap.containsKey("runningTime")){
+                String runningTime = TimeUtil.handleDateTimeByCn(resultMap.get("runningTime").toString());
+                runningRecord.setRunningTime(runningTime);
             }
             runningRecord.setUserId(userId);
             runningRecord.setCreateUserId(userId);

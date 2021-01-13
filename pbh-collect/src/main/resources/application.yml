@@ -19,5 +19,5 @@ pagehelper:
   helper-dialect: mysql # 指定数据库类型
   reasonable: true
   params: count=countSql
-  support-methods-arguments: true
+  support-methods-arguments: false
 
