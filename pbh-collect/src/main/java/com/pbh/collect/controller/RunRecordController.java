@@ -25,6 +25,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -62,8 +63,8 @@ public class RunRecordController extends BaseController {
         if(userId != null){
             runningRecord.setUserId(userId);
         }
-        PageInfo<RunningRecord> pageInfo = runRecordService.findByPage(runningRecord,pageable);
-        //PageInfo<RunningRecord> pageInfo = new PageInfo<>(pageList);
+        List<RunningRecord> list = runRecordService.findByPage(runningRecord,pageable);
+        PageInfo<RunningRecord> pageInfo = new PageInfo(list);
         return new ResponseEntity<>(PageUtil.toPage(pageInfo.getList(),pageInfo.getTotal()), HttpStatus.OK);
     }
 

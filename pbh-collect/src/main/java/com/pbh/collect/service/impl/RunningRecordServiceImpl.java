@@ -1,9 +1,7 @@
 package com.pbh.collect.service.impl;
 
 import com.alibaba.fastjson.JSON;
-import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 import com.pbh.api.entity.RunningRecord;
 import com.pbh.collect.entity.RunningTrack;
 import com.pbh.collect.mapper.RunningRecordMapper;
@@ -17,11 +15,8 @@ import com.pbh.common.utils.ObjectTransformUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
@@ -60,12 +55,10 @@ public class RunningRecordServiceImpl implements RunRecordService {
      * @see RunRecordService#findByPage(RunningRecord,Pageable)
      */
     @Override
-    public PageInfo findByPage(RunningRecord runningRecord,Pageable pageable) {
-        log.info("分页入参："+pageable.getPageNumber()+","+pageable.getPageSize());
-        PageHelper.startPage(pageable.getPageNumber(),pageable.getPageSize());
-        List<RunningRecord> list = runningRecordMapper.findByPageNumSize(runningRecord);
-        PageHelper.clearPage();
-        return new PageInfo(list);
+    public List<RunningRecord> findByPage(RunningRecord runningRecord,Pageable pageable) {
+        log.info("分页入参："+(pageable.getPageNumber()+1)+","+pageable.getPageSize());
+        PageHelper.startPage(pageable.getPageNumber()+1,pageable.getPageSize());
+        return runningRecordMapper.findByPageNumSize(runningRecord);
     }
 
     /**

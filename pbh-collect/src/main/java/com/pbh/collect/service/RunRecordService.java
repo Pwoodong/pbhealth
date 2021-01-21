@@ -1,10 +1,10 @@
 package com.pbh.collect.service;
 
-import com.github.pagehelper.Page;
-import com.github.pagehelper.PageInfo;
 import com.pbh.api.entity.RunningRecord;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 /**
  * Package com.pbh.collect.service
@@ -23,7 +23,7 @@ public interface RunRecordService {
      * @param  pageable 分页数据
      * @return List
      */
-    PageInfo findByPage(RunningRecord runningRecord, Pageable pageable);
+    List<RunningRecord> findByPage(RunningRecord runningRecord, Pageable pageable);
 
     /**
      * 新增记录

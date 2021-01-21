@@ -15,9 +15,10 @@ spring:
 mybatis:
   type-aliases-package: com.pbh.collect.entity
   mapper-locations: classpath:mapper/*.xml
+
 pagehelper:
-  helper-dialect: mysql # 指定数据库类型
+  helperDialect: mysql
   reasonable: true
+  supportMethodsArguments: true
   params: count=countSql
-  support-methods-arguments: false
 
