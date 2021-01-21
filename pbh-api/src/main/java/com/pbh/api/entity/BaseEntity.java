@@ -1,6 +1,9 @@
 package com.pbh.api.entity;
 
+import com.pbh.api.Query;
 import lombok.Data;
+
+import java.util.List;
 
 /**
  * Package com.pbh.api.entity
@@ -17,4 +20,8 @@ public class BaseEntity {
     private String startTime;
     /** 结束时间 */
     private String endTime;
+
+    @Query(type = Query.Type.BETWEEN)
+    private List<String> queryTime;
+
 }

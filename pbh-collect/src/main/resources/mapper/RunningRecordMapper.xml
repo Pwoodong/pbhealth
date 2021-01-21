@@ -17,6 +17,7 @@
                 and  #{endTime} >= t.running_time
             </if>
         </where>
+        order by t.running_time desc
     </select>
 
     <select id="findByPageNumSize" resultType="com.pbh.api.entity.RunningRecord">
@@ -29,6 +30,12 @@
             t.status = 0
             <if test="data.userId != null and data.userId != '' ">
                 and t.user_id = #{data.userId}
+            </if>
+            <if test="data.startTime != null and data.startTime != '' ">
+                and t.running_time >= #{data.startTime}
+            </if>
+            <if test="data.endTime != null and data.endTime != '' ">
+                and #{data.endTime} >= t.running_time
             </if>
         </where>
         order by t.running_time desc
