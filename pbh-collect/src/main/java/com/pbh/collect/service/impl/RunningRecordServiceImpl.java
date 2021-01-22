@@ -9,6 +9,7 @@ import com.pbh.collect.mapper.RunningTrackMapper;
 import com.pbh.collect.service.OcrService;
 import com.pbh.collect.service.RunRecordService;
 import com.pbh.collect.utils.TimeUtil;
+import com.pbh.common.algorithm.SnowFlake;
 import com.pbh.common.utils.GpxFileParseUtil;
 import com.pbh.common.utils.LatAndLonCalculateDistance;
 import com.pbh.common.utils.ObjectTransformUtil;
@@ -67,6 +68,8 @@ public class RunningRecordServiceImpl implements RunRecordService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public int insertRunningRecord(RunningRecord runningRecord) {
+        SnowFlake idWorker = new SnowFlake(0, 0);
+        runningRecord.setId(idWorker.nextId());
         return runningRecordMapper.insert(runningRecord);
     }
 

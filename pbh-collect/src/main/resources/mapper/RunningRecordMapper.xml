@@ -44,6 +44,9 @@
     <insert id="insert" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
         insert into running_record
         <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
             <if test="userId != null">
                 user_id,
             </if>
@@ -83,6 +86,9 @@
             status,create_time
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
             <if test="userId != null">
                 #{userId,jdbcType=INTEGER},
             </if>
