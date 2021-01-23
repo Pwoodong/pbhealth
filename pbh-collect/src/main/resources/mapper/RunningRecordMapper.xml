@@ -41,7 +41,7 @@
         order by t.running_time desc
     </select>
 
-    <insert id="insert" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+    <insert id="insert">
         insert into running_record
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
