@@ -47,7 +47,7 @@ public interface RunRecordService {
      * @param  array 数据
      * @return int
      */
-    int deleteRunningRecord(String[] array);
+    int deleteRunningRecord(Long[] array);
 
     /**
      * 上传记录

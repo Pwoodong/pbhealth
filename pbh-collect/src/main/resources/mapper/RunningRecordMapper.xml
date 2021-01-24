@@ -183,7 +183,7 @@
         where id = {id}
     </update>
 
-    <update id="deleteByBatch" parameterType="java.lang.String">
+    <update id="deleteByBatch" parameterType="java.lang.Long">
         update running_record
         set status = '99'
         where id in

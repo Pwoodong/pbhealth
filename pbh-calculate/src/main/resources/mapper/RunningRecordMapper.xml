@@ -28,10 +28,10 @@
             t.user_id userId,
             date_format( t.running_time, '%Y-%m' ) runningTime,
             SUM( IFNULL(t.kilometre,0) ) kilometre,
-            SUM( IFNULL(t.consume_time,0) ) consumeTime,
+            SUM( IFNULL(ROUND(((SUBSTRING_INDEX(t.consume_time,":",1) * 3600 + SUBSTRING_INDEX(SUBSTRING_INDEX(t.consume_time,":",-2),":",1) * 60 + SUBSTRING_INDEX(t.consume_time,":",-1))/60),2),0)) consumeTime,
             sum( IFNULL(t.calorie,0) ) calorie,
             sum( IFNULL(t.climb,0) ) climb,
-            sum( IFNULL(t.pace,0) ) pace,
+            sum( IFNULL( ROUND(((SUBSTRING_INDEX(t.pace,"'",1) * 60 + SUBSTRING_INDEX(SUBSTRING_INDEX(t.pace,"'",-1),"\"",1))/60),2), 0 ) ) pace,
             avg( IFNULL(t.heart_rate,0)) heartRate
         FROM running_record t
         <where>

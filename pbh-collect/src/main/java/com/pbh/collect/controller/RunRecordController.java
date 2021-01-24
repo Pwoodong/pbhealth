@@ -1,12 +1,13 @@
 package com.pbh.collect.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.github.pagehelper.Page;
 import com.github.pagehelper.PageInfo;
 import com.pbh.api.entity.RunningRecord;
+import com.pbh.api.vo.RunningRecordVo;
 import com.pbh.collect.service.OcrService;
 import com.pbh.collect.service.RunRecordService;
 import com.pbh.common.controller.BaseController;
+import com.pbh.common.utils.ConvertBeanUtils;
 import com.pbh.common.utils.PageUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -24,10 +25,8 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Package com.pbh.collect.controller
@@ -68,7 +67,8 @@ public class RunRecordController extends BaseController {
             runningRecord.setEndTime(runningRecord.getQueryTime().get(1));
         }
         List<RunningRecord> list = runRecordService.findByPage(runningRecord,pageable);
-        PageInfo<RunningRecord> pageInfo = new PageInfo(list);
+        List<RunningRecordVo> result = list.stream().map(e -> ConvertBeanUtils.translate(e, RunningRecordVo.class, "RunningRecord转RunningRecordVo")).collect(Collectors.toList());
+        PageInfo<RunningRecord> pageInfo = new PageInfo(result);
         return new ResponseEntity<>(PageUtil.toPage(pageInfo.getList(),pageInfo.getTotal()), HttpStatus.OK);
     }
 
@@ -77,9 +77,10 @@ public class RunRecordController extends BaseController {
     }
 
     @PostMapping
-    public ResponseEntity<Object> create(@Validated @RequestBody RunningRecord runningRecord){
+    public ResponseEntity<Object> create(@Validated @RequestBody RunningRecordVo runningRecordVo){
         Long userId = getUserId();
         log.info("userId:"+userId);
+        RunningRecord runningRecord = ConvertBeanUtils.translate(runningRecordVo, RunningRecord.class, "RunningRecordVo转RunningRecord");
         if(userId != null){
             runningRecord.setUserId(userId);
             runningRecord.setCreateUserId(userId);
@@ -109,11 +110,11 @@ public class RunRecordController extends BaseController {
             runningRecord.setUserId(userId);
             runningRecord.setUpdateUserId(userId);
         }
-        String[] array = new String[ids.size()];
+        Long[] array = new Long[ids.size()];
         Iterator<Long> it = ids.iterator();
         int i = 0;
         while (it.hasNext()) {
-            array[i] = it.next().toString();
+            array[i] = it.next();
             i++;
         }
         runRecordService.deleteRunningRecord(array);

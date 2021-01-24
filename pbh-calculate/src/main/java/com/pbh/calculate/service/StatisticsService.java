@@ -8,7 +8,7 @@ import java.util.Map;
 /**
  * Package com.running.report.service
  * ClassName ReportService.java
- * Description ${DESCRIPTION}
+ * Description 统计报告接口
  *
  * @author Jy
  * @version V1.0

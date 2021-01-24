@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 /**
  * Package com.running.report.service.impl
  * ClassName ReportServiceImpl.java
- * Description ${DESCRIPTION}
+ * Description 统计报告接口实现
  *
  * @author Jy
  * @version V1.0
@@ -83,7 +83,7 @@ public class StatisticsServiceImpl implements StatisticsService {
                 LocalDate runDate = runDateTime.toLocalDate();
                 if(i == (oldDate.until(runDate, ChronoUnit.DAYS))){
                     yAxisKilometre[i-1] = record.getKilometre();
-                    yAxisConsumeTime[i-1] = record.getConsumeTime();
+                    yAxisConsumeTime[i-1] = record.getDoubleConsumeTime();
                     counter ++;
                 }
             }
@@ -139,7 +139,7 @@ public class StatisticsServiceImpl implements StatisticsService {
                 log.debug("相差月份："+diffMonth);
                 if(i == diffMonth){
                     yAxisKilometre[i] = record.getKilometre();
-                    yAxisConsumeTime[i] = record.getConsumeTime();
+                    yAxisConsumeTime[i] = record.getDoubleConsumeTime();
                     yAxisCalorie[i] = record.getCalorie();
                     counter ++;
                 }
@@ -172,7 +172,7 @@ public class StatisticsServiceImpl implements StatisticsService {
         List<RunningRecord> list = runningRecordMapper.selectRunningRecord(runningRecord);
         Double sumKilometre = list.stream().collect(Collectors.toList()).stream().mapToDouble(RunningRecord::getKilometre).sum();
         Double sumCalorie = list.stream().collect(Collectors.toList()).stream().mapToDouble(RunningRecord::getCalorie).sum();
-        Double sumConsumeTime = list.stream().collect(Collectors.toList()).stream().mapToDouble(RunningRecord::getConsumeTime).sum();
+        Double sumConsumeTime = list.stream().collect(Collectors.toList()).stream().mapToDouble(RunningRecord::getDoubleConsumeTime).sum();
         Double sumClimb = list.stream().collect(Collectors.toList()).stream().mapToDouble(RunningRecord::getClimb).sum();
         result.put("sumKilometre",sumKilometre);
         result.put("sumCalorie",sumCalorie);

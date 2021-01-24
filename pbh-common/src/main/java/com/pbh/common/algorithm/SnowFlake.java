@@ -11,8 +11,8 @@ package com.pbh.common.algorithm;
  **/
 public class SnowFlake {
 
-    /** 开始时间截 (2019-08-06) */
-    private final long twEpoch = 1565020800000L;
+    /** 开始时间截 (2021-01-01) */
+    private final long twEpoch = 1609430400L;
     /** 机器id所占的位数 */
     private final long workerIdBits = 5L;
     /** 数据标识id所占的位数 */

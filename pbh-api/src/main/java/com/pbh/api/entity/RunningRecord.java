@@ -1,5 +1,6 @@
 package com.pbh.api.entity;
 
+import cn.hutool.core.util.StrUtil;
 import cn.hutool.db.sql.Query;
 import lombok.Data;
 
@@ -55,4 +56,16 @@ public class RunningRecord extends BaseEntity {
     /** 修改人 */
     private Long updateUserId;
 
+    public Double getDoubleConsumeTime(){
+        Double result = 0.0;
+        if(StrUtil.isNotBlank(this.consumeTime) && this.consumeTime.indexOf(":") != -1){
+            String hours = this.consumeTime.split(":")[0];
+            String minutes = this.consumeTime.split(":")[1];
+            String seconds = this.consumeTime.split(":")[2];
+            int total = Integer.valueOf(hours) * 3600 + Integer.valueOf(minutes) * 60 + Integer.valueOf(seconds);
+            result = Double.valueOf(total / 60);
+            return result;
+        }
+        return result;
+    }
 }

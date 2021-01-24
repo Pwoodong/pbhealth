@@ -83,11 +83,11 @@ public class RunningRecordServiceImpl implements RunRecordService {
     }
 
     /**
-     * @see RunRecordService#deleteRunningRecord(String[])
+     * @see RunRecordService#deleteRunningRecord(Long[])
      */
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public int deleteRunningRecord(String[] array) {
+    public int deleteRunningRecord(Long[] array) {
         return runningRecordMapper.deleteByBatch(array);
     }
 
@@ -139,11 +139,31 @@ public class RunningRecordServiceImpl implements RunRecordService {
                 pace = (double) Math.round(pace * 100) / 100;
                 log.info("配速:"+pace);
                 RunningRecord runningRecord = new RunningRecord();
+                SnowFlake idWorker = new SnowFlake(0, 0);
+                runningRecord.setId(idWorker.nextId());
                 runningRecord.setUserId(userId);
                 runningRecord.setType("01");
-                runningRecord.setKilometre(kilometre);
-                runningRecord.setConsumeTime(consumeTime.toString());
-                runningRecord.setPace(String.valueOf(pace));
+                BigDecimal b = new BigDecimal(kilometre);
+                double f1 = b.setScale(2,   BigDecimal.ROUND_HALF_UP).doubleValue();
+                runningRecord.setKilometre(f1);
+                /** 耗时匹配格式 01:01:01 */
+                String consumeTimeStr = String.valueOf(consumeTime);
+                consumeTimeStr = consumeTimeStr.replace(".",":");
+                int len = consumeTimeStr.split(":").length;
+                if(len == 2){
+                    consumeTimeStr = "00:"+consumeTimeStr;
+                }
+                if(len == 1){
+                    consumeTimeStr = "00:00:"+consumeTimeStr;
+                }
+                if(len == 0){
+                    consumeTimeStr = "00:00:00";
+                }
+                runningRecord.setConsumeTime(consumeTimeStr);
+                /** 配速匹配格式 6'00" */
+                String paceStr = String.valueOf(pace);
+                paceStr = paceStr.replace(".","'") + "\"";
+                runningRecord.setPace(paceStr);
                 runningRecord.setRunningTime(runStartTime);
                 runningRecord.setClimb(climb);
                 runningRecord.setCreateUserId(userId);
@@ -165,15 +185,37 @@ public class RunningRecordServiceImpl implements RunRecordService {
             Map<String,Object> resultMap = ocrService.takePictureInformation(file);
             log.info("文件内容【"+ JSON.toJSONString(resultMap)+"】");
             RunningRecord runningRecord = new RunningRecord();
+            SnowFlake idWorker = new SnowFlake(0, 0);
+            runningRecord.setId(idWorker.nextId());
             runningRecord.setType("01");
             if(resultMap.containsKey("kilometre")){
                 runningRecord.setKilometre(Double.parseDouble(resultMap.get("kilometre").toString()));
             }
             if(resultMap.containsKey("consumeTime")){
-                runningRecord.setConsumeTime(resultMap.get("consumeTime").toString());
+                /** 耗时匹配格式 01:01:01 */
+                String consumeTimeStr = String.valueOf(resultMap.get("consumeTime").toString());
+                consumeTimeStr = consumeTimeStr.replace(".",":");
+                int len = consumeTimeStr.split(":").length;
+                if(len == 2){
+                    consumeTimeStr = "00:"+consumeTimeStr;
+                }
+                if(len == 1){
+                    consumeTimeStr = "00:00:"+consumeTimeStr;
+                }
+                if(len == 0){
+                    consumeTimeStr = "00:00:00";
+                }
+                runningRecord.setConsumeTime(consumeTimeStr);
             }
             if(resultMap.containsKey("pace")){
-                runningRecord.setPace(resultMap.get("pace").toString());
+                /** 配速匹配格式 6'00" */
+                String paceStr = String.valueOf(resultMap.get("pace").toString());
+                StringBuffer stringBuffer = new StringBuffer(paceStr);
+                for (int index = 2; index < paceStr.length(); index += 3) {
+                    stringBuffer.insert(index, "'");
+                }
+                stringBuffer.append("\"");
+                runningRecord.setPace(stringBuffer.toString());
             }
             if(resultMap.containsKey("calorie")){
                 runningRecord.setCalorie(Double.parseDouble(resultMap.get("calorie").toString()));

@@ -58,6 +58,6 @@ public interface RunningRecordMapper {
      * @param   array   数据
      * @return  int
      */
-    int deleteByBatch(String[] array);
+    int deleteByBatch(Long[] array);
 
 }
