@@ -69,7 +69,7 @@ public class RunningRecordServiceImpl implements RunRecordService {
     @Transactional(rollbackFor = Exception.class)
     public int insertRunningRecord(RunningRecord runningRecord) {
         SnowFlake idWorker = new SnowFlake(0, 0);
-        runningRecord.setId(idWorker.nextId());
+        runningRecord.setId(String.valueOf(idWorker.nextId()));
         return runningRecordMapper.insert(runningRecord);
     }
 
@@ -140,7 +140,7 @@ public class RunningRecordServiceImpl implements RunRecordService {
                 log.info("配速:"+pace);
                 RunningRecord runningRecord = new RunningRecord();
                 SnowFlake idWorker = new SnowFlake(0, 0);
-                runningRecord.setId(idWorker.nextId());
+                runningRecord.setId(String.valueOf(idWorker.nextId()));
                 runningRecord.setUserId(userId);
                 runningRecord.setType("01");
                 BigDecimal b = new BigDecimal(kilometre);
@@ -186,7 +186,7 @@ public class RunningRecordServiceImpl implements RunRecordService {
             log.info("文件内容【"+ JSON.toJSONString(resultMap)+"】");
             RunningRecord runningRecord = new RunningRecord();
             SnowFlake idWorker = new SnowFlake(0, 0);
-            runningRecord.setId(idWorker.nextId());
+            runningRecord.setId(String.valueOf(idWorker.nextId()));
             runningRecord.setType("01");
             if(resultMap.containsKey("kilometre")){
                 runningRecord.setKilometre(Double.parseDouble(resultMap.get("kilometre").toString()));

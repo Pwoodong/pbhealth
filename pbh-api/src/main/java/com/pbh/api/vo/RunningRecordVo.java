@@ -19,7 +19,7 @@ import java.util.Date;
 public class RunningRecordVo extends BaseEntity {
 
     /** ID */
-    private Long id;
+    private String id;
     /** 用户ID */
     private Long userId;
     /** 用户名称 */

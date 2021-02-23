@@ -1,12 +1,9 @@
 package com.pbh.api.entity;
 
 import cn.hutool.core.util.StrUtil;
-import cn.hutool.db.sql.Query;
 import lombok.Data;
 
-import java.sql.Timestamp;
 import java.util.Date;
-import java.util.List;
 
 /**
  * Package com.pbh.api.entity
@@ -20,7 +17,7 @@ import java.util.List;
 @Data
 public class RunningRecord extends BaseEntity {
     /** ID */
-    private Long id;
+    private String id;
     /** 用户ID */
     private Long userId;
     /** 用户名称 */
