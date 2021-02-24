@@ -1,10 +1,11 @@
-package com.pbh.collect.service.impl;
+package com.pbh.collect.dubbo;
 
+import com.alibaba.dubbo.config.annotation.Service;
 import com.pbh.api.entity.RunningRecord;
+import com.pbh.api.service.DataCollectService;
 import com.pbh.collect.entity.RunningTrack;
 import com.pbh.collect.mapper.RunningRecordMapper;
 import com.pbh.collect.mapper.RunningTrackMapper;
-import com.pbh.api.service.DataCollectService;
 import com.pbh.common.utils.GpxFileParseUtil;
 import com.pbh.common.utils.ObjectTransformUtil;
 import com.pbh.common.utils.PageUtil;
@@ -12,7 +13,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -23,18 +23,16 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Package com.pbh.collect.service.impl
+ * Package com.pbh.collect.dubbo
  * ClassName DataCollectServiceImpl.java
  * Description 数据采集接口实现
  *
  * @author Liaoyj
  * @version V1.0
- * @date 2020-11-08 16:26
+ * @date 2021-02-24 下午11:15
  **/
 @Slf4j
-//@Service("dataCollectService")
-//@DubboService
-//@Component
+@Service
 public class DataCollectServiceImpl implements DataCollectService {
 
     @Autowired

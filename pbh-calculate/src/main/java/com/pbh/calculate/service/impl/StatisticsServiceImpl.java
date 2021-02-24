@@ -1,7 +1,6 @@
 package com.pbh.calculate.service.impl;
 
 import com.pbh.api.entity.RunningRecord;
-import com.pbh.api.service.DataCollectService;
 import com.pbh.calculate.mapper.RunningRecordMapper;
 import com.pbh.calculate.service.StatisticsService;
 import lombok.extern.slf4j.Slf4j;
@@ -31,9 +30,6 @@ import java.util.stream.Collectors;
 @Slf4j
 @Service("statisticsService")
 public class StatisticsServiceImpl implements StatisticsService {
-
-    //@DubboReference
-    DataCollectService dataCollectService;
 
     @Resource
     private RunningRecordMapper runningRecordMapper;

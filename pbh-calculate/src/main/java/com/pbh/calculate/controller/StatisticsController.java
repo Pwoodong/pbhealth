@@ -1,6 +1,8 @@
 package com.pbh.calculate.controller;
 
+import com.alibaba.dubbo.config.annotation.Reference;
 import com.pbh.api.entity.RunningRecord;
+import com.pbh.api.service.DataCollectService;
 import com.pbh.calculate.service.StatisticsService;
 import com.pbh.common.controller.BaseController;
 import lombok.RequiredArgsConstructor;
@@ -32,10 +34,14 @@ public class StatisticsController extends BaseController {
     @Autowired
     private StatisticsService statisticsService;
 
+    @Reference
+    DataCollectService dataCollectService;
+
     @PostMapping("getRecordList")
     public List<RunningRecord> getRecordList(String userId){
         RunningRecord record = new RunningRecord();
-        List<RunningRecord> list = statisticsService.selectRunningRecord(record);
+        //List<RunningRecord> list = statisticsService.selectRunningRecord(record);
+        List<RunningRecord> list = dataCollectService.selectRunningRecord(record);
         return list;
     }
 
