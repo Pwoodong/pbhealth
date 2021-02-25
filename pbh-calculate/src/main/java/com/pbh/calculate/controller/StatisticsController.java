@@ -1,12 +1,12 @@
 package com.pbh.calculate.controller;
 
-import com.alibaba.dubbo.config.annotation.Reference;
 import com.pbh.api.entity.RunningRecord;
 import com.pbh.api.service.DataCollectService;
 import com.pbh.calculate.service.StatisticsService;
 import com.pbh.common.controller.BaseController;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,8 +34,8 @@ public class StatisticsController extends BaseController {
     @Autowired
     private StatisticsService statisticsService;
 
-    @Reference
-    DataCollectService dataCollectService;
+    @DubboReference
+    private DataCollectService dataCollectService;
 
     @PostMapping("getRecordList")
     public List<RunningRecord> getRecordList(String userId){

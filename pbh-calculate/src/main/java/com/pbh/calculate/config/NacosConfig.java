@@ -16,7 +16,7 @@ import javax.annotation.PostConstruct;
  * @version V1.0
  * @date 2021-02-24 下午11:32
  **/
-@Configuration
+//@Configuration
 public class NacosConfig {
 
     @Value("${server.port}")

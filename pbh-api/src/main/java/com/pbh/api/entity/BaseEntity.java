@@ -15,7 +15,7 @@ import java.util.List;
  * @date 2021-01-04 下午11:02
  **/
 @Data
-public class BaseEntity {
+public class BaseEntity implements java.io.Serializable {
     /** 开始时间 */
     private String startTime;
     /** 结束时间 */

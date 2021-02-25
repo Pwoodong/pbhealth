@@ -1,6 +1,5 @@
 package com.pbh.collect.dubbo;
 
-import com.alibaba.dubbo.config.annotation.Service;
 import com.pbh.api.entity.RunningRecord;
 import com.pbh.api.service.DataCollectService;
 import com.pbh.collect.entity.RunningTrack;
@@ -10,6 +9,7 @@ import com.pbh.common.utils.GpxFileParseUtil;
 import com.pbh.common.utils.ObjectTransformUtil;
 import com.pbh.common.utils.PageUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -32,7 +32,7 @@ import java.util.Map;
  * @date 2021-02-24 下午11:15
  **/
 @Slf4j
-@Service
+@DubboService
 public class DataCollectServiceImpl implements DataCollectService {
 
     @Autowired

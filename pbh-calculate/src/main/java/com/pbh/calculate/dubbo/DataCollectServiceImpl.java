@@ -1,11 +1,11 @@
 package com.pbh.calculate.dubbo;
 
-import com.alibaba.dubbo.config.annotation.Reference;
-import com.alibaba.dubbo.config.annotation.Service;
 import com.pbh.api.entity.RunningRecord;
 import com.pbh.api.service.DataCollectService;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -22,8 +22,11 @@ import java.util.Map;
  * @date 2021-02-25 上午12:01
  **/
 @Slf4j
-@Service
+//@Service("DataCollectConsumerService")
 public class DataCollectServiceImpl implements DataCollectService {
+
+    @DubboReference
+    private DataCollectService dataCollectService;
 
     @Override
     public Map<String,Object> queryAll(RunningRecord runningRecord, Pageable pageable) {
@@ -35,7 +38,7 @@ public class DataCollectServiceImpl implements DataCollectService {
      */
     @Override
     public List<RunningRecord> selectRunningRecord(RunningRecord runningRecord) {
-        return null;
+        return dataCollectService.selectRunningRecord(runningRecord);
     }
 
     /**
