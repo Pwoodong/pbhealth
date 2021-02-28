@@ -34,14 +34,14 @@ public class StatisticsController extends BaseController {
     @Autowired
     private StatisticsService statisticsService;
 
-    @DubboReference
-    private DataCollectService dataCollectService;
+//    @DubboReference
+//    private DataCollectService dataCollectService;
 
     @PostMapping("getRecordList")
     public List<RunningRecord> getRecordList(String userId){
         RunningRecord record = new RunningRecord();
-        //List<RunningRecord> list = statisticsService.selectRunningRecord(record);
-        List<RunningRecord> list = dataCollectService.selectRunningRecord(record);
+        List<RunningRecord> list = statisticsService.selectRunningRecord(record);
+        //List<RunningRecord> list = dataCollectService.selectRunningRecord(record);
         return list;
     }
 

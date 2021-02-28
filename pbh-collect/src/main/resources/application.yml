@@ -1,7 +1,7 @@
 server:
-  port: 8881
+  port: 8880
   servlet:
-    context-path: /calculate
+    context-path: /collect
 
 spring:
   #配置文件
@@ -13,7 +13,7 @@ spring:
       enabled: true
 
 mybatis:
-  type-aliases-package: com.pbh.calculate.entity
+  type-aliases-package: com.pbh.collect.entity
   mapper-locations: classpath:mapper/*.xml
 
 pagehelper:

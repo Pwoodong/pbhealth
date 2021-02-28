@@ -32,7 +32,7 @@ import java.util.Map;
  * @date 2021-02-24 下午11:15
  **/
 @Slf4j
-@DubboService
+//@DubboService
 public class DataCollectServiceImpl implements DataCollectService {
 
     @Autowired

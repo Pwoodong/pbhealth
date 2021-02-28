@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: collect
+  config:
+    dataid: collect-dev.yml
+    group: DEFAULT_GROUP
+  cloud:
+    nacos:
+      config:
+        server-addr: localhost:8848
+        file-extension: yml
+        prefix: collect
+        extension-configs[0]:
+          data-id: collect-dev.yml
+          group: DEFAULT_GROUP
+          refresh: true
+        enabled: true
+
+mybatis:
+  type-aliases-package: com.pbh.collect.entity
+  mapper-locations: classpath:mapper/*.xml
