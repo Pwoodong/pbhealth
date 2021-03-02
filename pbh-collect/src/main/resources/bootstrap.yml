@@ -1,8 +1,13 @@
+server:
+  ip: localhost
+  port: 8880
+  servlet:
+    context-path: /collect
 spring:
   application:
     name: collect
   config:
-    dataid: collect-dev.yml
+    dataid: collect-pro.yml
     group: DEFAULT_GROUP
   cloud:
     nacos:
@@ -11,7 +16,7 @@ spring:
         file-extension: yml
         prefix: collect
         extension-configs[0]:
-          data-id: collect-dev.yml
+          data-id: collect-pro.yml
           group: DEFAULT_GROUP
           refresh: true
         enabled: true
@@ -19,3 +24,9 @@ spring:
 mybatis:
   type-aliases-package: com.pbh.collect.entity
   mapper-locations: classpath:mapper/*.xml
+
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql

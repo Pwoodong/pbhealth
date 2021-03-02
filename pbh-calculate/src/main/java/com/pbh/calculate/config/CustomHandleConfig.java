@@ -17,7 +17,7 @@ import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.data.redis.RedisProperties;
 import org.springframework.boot.autoconfigure.web.ServerProperties;
-import org.springframework.boot.devtools.autoconfigure.DevToolsProperties;
+//import org.springframework.boot.devtools.autoconfigure.DevToolsProperties;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.yaml.snakeyaml.Yaml;
@@ -77,9 +77,9 @@ public class CustomHandleConfig implements BeanPostProcessor {
                 updatePageHelperProperties(object,resultMap);
             }
 
-            if(object instanceof DevToolsProperties){
-                updateDevToolsProperties(object,resultMap);
-            }
+//            if(object instanceof DevToolsProperties){
+//                updateDevToolsProperties(object,resultMap);
+//            }
 
             if(object instanceof SpringApplication){
                 updateSpringApplication(object,resultMap);
@@ -370,20 +370,20 @@ public class CustomHandleConfig implements BeanPostProcessor {
      * @param   resultMap      配置数据
      * */
     private void updateDevToolsProperties(Object object,Map<String, Object> resultMap){
-        DevToolsProperties properties = (DevToolsProperties) object;
-        if(resultMap.containsKey("spring")){
-            Map<String, Object> springMap = (Map<String, Object>) resultMap.get("spring");
-            if(springMap.containsKey("devtools")){
-                Map<String, Object> devtoolsMap = (Map<String, Object>)springMap.get("devtools");
-                if(devtoolsMap.containsKey("restart")){
-                    Map<String, Object> restartMap = (Map<String, Object>)devtoolsMap.get("restart");
-                    if(restartMap.containsKey("enabled")){
-                        boolean enabled = (boolean) restartMap.get("enabled");
-                        properties.getRestart().setEnabled(enabled);
-                    }
-                }
-            }
-        }
+//        DevToolsProperties properties = (DevToolsProperties) object;
+//        if(resultMap.containsKey("spring")){
+//            Map<String, Object> springMap = (Map<String, Object>) resultMap.get("spring");
+//            if(springMap.containsKey("devtools")){
+//                Map<String, Object> devtoolsMap = (Map<String, Object>)springMap.get("devtools");
+//                if(devtoolsMap.containsKey("restart")){
+//                    Map<String, Object> restartMap = (Map<String, Object>)devtoolsMap.get("restart");
+//                    if(restartMap.containsKey("enabled")){
+//                        boolean enabled = (boolean) restartMap.get("enabled");
+//                        properties.getRestart().setEnabled(enabled);
+//                    }
+//                }
+//            }
+//        }
     }
 
     /**

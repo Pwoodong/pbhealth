@@ -1,8 +1,13 @@
+server:
+  port: 8879
+  servlet:
+    context-path: /gateway
+
 spring:
   application:
     name: gateway
   config:
-    dataid: gateway-dev.yml
+    dataid: gateway-pro.yml
     group: DEFAULT_GROUP
   cloud:
     nacos:
@@ -20,3 +25,7 @@ spring:
             - Path=/collect/**       # 当请求路径满足Path指定的规则时,才进行路由转发
 #          filters:                   # 过滤器,请求在传递过程中可以通过过滤器对其进行一定的修改
 #            - StripPrefix=1           # 转发之前去掉1层路径
+        - id: gateway-calculate-service
+          uri: lb://calculate-service
+          predicates:
+            - Path=/calculate/**
