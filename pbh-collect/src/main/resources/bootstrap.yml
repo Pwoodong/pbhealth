@@ -20,6 +20,9 @@ spring:
           group: DEFAULT_GROUP
           refresh: true
         enabled: true
+      sentinel:
+        transport:
+          dashboard: localhost:8080
 
 mybatis:
   type-aliases-package: com.pbh.collect.entity
