@@ -3,15 +3,15 @@
 ## 项目简介
 
         基于Spring Boot、Redis、Zookeeper、Dubbo、Vue的前后端分离的运动健康管理系统；实现个人运动健康的管理，涉及运动数据采集、运动健康报告计算生成。
-
+    
         正在采用Nacos、Sentinel、Gateway等组件升级成为Spring Cloud微服务架构。
 
 ## 项目源码
 
-| 平台   | 名称                 | 地址                                             |
-| ------ | -------------------- | ------------------------------------------------ |
-| github | 运动健康管理后端源码 | https://github.com/Pwoodong/personal-health.git  |
-| github | 运动健康管理前端源码 | https://github.com/Pwoodong/sport-health-web.git |
+| 平台   | 名称                 | 地址                                         |
+| ------ | -------------------- | -------------------------------------------- |
+| github | 运动健康管理后端源码 | https://github.com/Pwoodong/pbhealth.git     |
+| github | 运动健康管理前端源码 | https://github.com/Pwoodong/pbhealth-web.git |
 
 ## 快速体验
 
