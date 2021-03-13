@@ -2,17 +2,24 @@
 
 ## 项目简介
 
-​	基于Spring Boot、Redis、Zookeeper、Dubbo、Vue的前后端分离的运动健康管理系统；
+        基于Spring Boot、Redis、Zookeeper、Dubbo、Vue的前后端分离的运动健康管理系统；实现个人运动健康的管理，涉及运动数据采集、运动健康报告计算生成。
 
-​    实现个人运动健康的管理，涉及运动数据采集、运动健康报告计算生成。
+        正在采用Nacos、Sentinel、Gateway等组件升级成为Spring Cloud微服务架构。
 
 ## 项目源码
 
-| 平台   | 名称                         | 地址                                                |
-| ------ | ---------------------------- | --------------------------------------------------- |
-| github | 运动健康管理后端源码         | https://github.com/Pwoodong/personal-health.git     |
-| github | 运动健康管理系统模块后端源码 | https://github.com/Pwoodong/sport-health-system.git |
-| github | 运动健康管理前端源码         | https://github.com/Pwoodong/sport-health-web.git    |
+| 平台   | 名称                 | 地址                                             |
+| ------ | -------------------- | ------------------------------------------------ |
+| github | 运动健康管理后端源码 | https://github.com/Pwoodong/personal-health.git  |
+| github | 运动健康管理前端源码 | https://github.com/Pwoodong/sport-health-web.git |
+
+## 快速体验
+
+​       体验地址：https://www.pbhealth.xyz/
+
+​       账号：test
+
+​       密码：123456
 
 ## 项目功能
 
@@ -52,11 +59,13 @@
 
 ## 项目结构
 
-​	 	*health-common*  为系统公共模块，包含各种工具类，公共配置
+​	 	pbh-eladmin  为系统模块，包含系统基础功能涉及用户、角色、菜单、组织等管理以及系统登录、授权等功能
 
-​	 	*health-collect* 为系统采集模块，包含运动数据的采集功能
+​	 	pbh-collect 为系统采集模块，包含运动数据的采集功能
 
-​     	*health-calculate* 为系统计算模块，包含运动数据的计算
+​     	pbh-calculate 为系统计算模块，包含运动数据的计算功能
+
+​	    pbh-gateway 为系统网关模块，主要用于网关路由 
 
 ## 后记
 
