@@ -41,13 +41,13 @@ public class LatAndLonCalculateDistance {
         return (EARTH_MEAN_DIAMETER * Math.atan2(Math.sqrt(h), Math.sqrt(1 - h)));
     }
 
-    public static void main(String[] args) {
-        double latCenterRad = 39.96152114868164;
-        double lonCenterRad = 116.2874526977539;
-        double latVal = 39.96153259277344;
-        double lonVal = 116.28746032714844;
-        double distance = getDistance(latCenterRad,lonCenterRad,latVal,lonVal);
-        System.out.println(distance);
-    }
+//    public static void main(String[] args) {
+//        double latCenterRad = 39.96152114868164;
+//        double lonCenterRad = 116.2874526977539;
+//        double latVal = 39.96153259277344;
+//        double lonVal = 116.28746032714844;
+//        double distance = getDistance(latCenterRad,lonCenterRad,latVal,lonVal);
+//        System.out.println(distance);
+//    }
 
 }

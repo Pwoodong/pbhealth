@@ -57,14 +57,14 @@ public class GpxFileParseUtil {
         return resultList;
     }
 
-    public static void main(String[] args) {
-        try{
-            FileInputStream in = new FileInputStream("F:/1111.gpx");
-            List<Map<String,Object>> result = gpxParse(in);
-            System.out.println(result.size());
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-    }
+//    public static void main(String[] args) {
+//        try{
+//            FileInputStream in = new FileInputStream("F:/1111.gpx");
+//            List<Map<String,Object>> result = gpxParse(in);
+//            System.out.println(result.size());
+//        }catch (Exception e){
+//            e.printStackTrace();
+//        }
+//    }
 
 }

@@ -18,11 +18,15 @@
 	
 	<modules>
         <module>pbh-common</module>
+        <module>pbh-logging</module>
+        <module>pbh-tools</module>
+        <module>pbh-generator</module>
         <module>pbh-api</module>
         <module>pbh-config</module>
         <module>pbh-calculate</module>
         <module>pbh-collect</module>
         <module>pbh-gateway</module>
+        <module>pbh-eladmin</module>
     </modules>
 
     <properties>

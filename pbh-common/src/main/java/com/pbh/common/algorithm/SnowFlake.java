@@ -107,13 +107,4 @@ public class SnowFlake {
         return System.currentTimeMillis();
     }
 
-    /** 测试 */
-    public static void main(String[] args) {
-        System.out.println(System.currentTimeMillis());
-        SnowFlake idWorker = new SnowFlake(0, 0);
-        long id = idWorker.nextId();
-        System.out.println(Long.toBinaryString(id));
-        System.out.println(id);
-    }
-
 }
