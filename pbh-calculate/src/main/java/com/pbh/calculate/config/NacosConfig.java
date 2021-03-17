@@ -3,6 +3,7 @@ package com.pbh.calculate.config;
 import com.alibaba.nacos.api.annotation.NacosInjected;
 import com.alibaba.nacos.api.exception.NacosException;
 import com.alibaba.nacos.api.naming.NamingService;
+import com.pbh.common.utils.ListIp;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import javax.annotation.PostConstruct;
@@ -21,7 +22,7 @@ import java.net.UnknownHostException;
 @Configuration
 public class NacosConfig {
 
-    @Value("${server.ip}")
+    @Value("${server.web.url}")
     private String serverIp;
     @Value("${server.port}")
     private int serverPort;
@@ -31,17 +32,7 @@ public class NacosConfig {
     private NamingService namingService;
     @PostConstruct
     public void registerInstance() throws NacosException {
-        InetAddress address = null;
-        try {
-            address = InetAddress.getLocalHost();
-        } catch (UnknownHostException e) {
-            e.printStackTrace();
-        }
-        String ip = "127.0.0.1";
-        if(address != null){
-            ip = address.getHostAddress();
-        }
-        namingService.registerInstance(applicationName, serverIp, serverPort);
+        namingService.registerInstance(applicationName, ListIp.getWebIp(serverIp), serverPort);
     }
 
 }

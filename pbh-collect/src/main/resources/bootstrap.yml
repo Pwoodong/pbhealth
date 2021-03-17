@@ -1,5 +1,6 @@
 server:
-  ip: localhost
+  web:
+    url: http://www.net.cn/static/customercare/yourip.asp
   port: 8880
   servlet:
     context-path: /collect

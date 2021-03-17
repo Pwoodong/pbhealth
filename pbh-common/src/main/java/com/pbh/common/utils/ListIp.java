@@ -27,8 +27,8 @@ public class ListIp {
             }
             br.close();
             webContent = sb.toString();
-            int start = webContent.indexOf("[") + 1;
-            int end = webContent.indexOf("]");
+            int start = webContent.indexOf("<h2>") + 4;
+            int end = webContent.indexOf("</h2>");
             System.out.println("webContent=" + webContent);
             System.out.println("start=" + start);
             System.out.println("end=" + end);
@@ -41,6 +41,11 @@ public class ListIp {
             e.printStackTrace();
             return "error open url:" + strUrl;
         }
+    }
+
+    public static void main(String[] args) {
+        String ip = getWebIp("http://www.net.cn/static/customercare/yourip.asp");
+        System.out.println("public ip is :" + ip);
     }
 
 }
